@@ -28,4 +28,8 @@ body
     color #2c3e50
     &.router-link-exact-active
       color #42b983
+a:active
+  text-decoration:none
+a
+  text-decoration:none;
 </style>

@@ -19,7 +19,7 @@
           </div>
         </router-link>
         <div class="header-email header-each-tab">{{email}}</div>
-        <div class="header-logout header-each-tab">Logout</div>
+        <div class="header-logout header-each-tab" @click="clickLogout">Logout</div>
       </el-col>
     </el-row>
   </div>
@@ -27,15 +27,29 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
+// import { Table, elRow } from 'element-ui';
+// import { Layout, elRow } from 'element-ui';
 
 export default {
   name: 'Header',
+  components: {
+    // Table,
+    // elRow,
+    // Layout,
+    // elRow,
+  },
   props: {
     type: ''
   },
   computed: mapState({
     email: state => state.account.email,
   }),
+  methods: {
+    ...mapActions(['logout']),
+    clickLogout() {
+      this.logout();
+    }
+  }
 };
 </script>
 

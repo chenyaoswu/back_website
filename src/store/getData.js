@@ -27,6 +27,12 @@ export const signUp = (data) => {
 	return fetch(baseUrl + '/api/user/register/', data, 'POST');
 };
 /**
+ * 注册
+ */
+export const ajaxLogout = (data) => {
+	return fetch(baseUrl + '/api/user/logout/', {}, 'POST');
+};
+/**
  * 是否可领取邀请码
  */
 export const ajaxInviteCodeStatus = (data) => {

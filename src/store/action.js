@@ -10,6 +10,7 @@ import {
   ajaxHardList,
   ajaxRevenueList,
   ajaxAllRevenue,
+  ajaxLogout,
 } from './getData';
 
 import {
@@ -31,6 +32,11 @@ export default {
     commit(LOGIN_IN);
     commit(ABLE_LOGIN, false);
     router.push({ name: 'home' });
+  },
+  async logout({ commit }) {
+    const res = await ajaxLogout();
+    router.push({ name: 'login' });
+    return res;
   },
   async getImageCode({ commit }, params) {
     const res = await ajaxImageCode();

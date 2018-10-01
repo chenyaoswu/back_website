@@ -25,23 +25,34 @@
               <el-menu-item index="1-3" disabled>Withdriawal</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
-          <el-submenu index="2">
+          <el-submenu index="2" disabled>
              <template slot="title">
               <img  class="menu-icon home-icon" src="../../assets/revenue.png" >
               <span slot="title" disabled>Task Revenue</span>
             </template>
              <el-menu-item-group :span="3" disabled>
-              <el-menu-item index="2-1" disabled>Revenue</el-menu-item>
-              <el-menu-item index="2-2" disabled>Get Task</el-menu-item>
-              <el-menu-item index="2-3" disabled>Implementation</el-menu-item>
+              <!-- <el-menu-item index="2-1" disabled>Revenue</el-menu-item> -->
+              <!-- <el-menu-item index="2-2" disabled>Get Task</el-menu-item> -->
+              <!-- <el-menu-item index="2-3" disabled>Implementation</el-menu-item> -->
             </el-menu-item-group>
           </el-submenu>
-          <el-menu-item index="3" disabled>
+          <el-submenu index="3" disabled>
+             <template slot="title">
+              <img  class="menu-icon home-icon" src="../../assets/home/task.png" >
+              <span slot="title" disabled>Power Analysis</span>
+            </template>
+             <el-menu-item-group :span="3" disabled>
+              <!-- <el-menu-item index="2-1" disabled>Revenue</el-menu-item> -->
+              <!-- <el-menu-item index="2-2" disabled>Get Task</el-menu-item> -->
+              <!-- <el-menu-item index="2-3" disabled>Implementation</el-menu-item> -->
+            </el-menu-item-group>
+          </el-submenu>
+          <!-- <el-menu-item index="3" disabled>
             <i class="el-icon-document"></i> 
             <span slot="title">Power Analysis</span>
-          </el-menu-item>
+          </el-menu-item> -->
           <el-menu-item index="4" disabled>
-            <!-- <i class="el-icon-setting"></i> -->
+            <img  class="menu-icon home-icon" src="../../assets/revenue.png" >
             <span slot="title">Network Contribution</span>
           </el-menu-item>
         </el-menu>
