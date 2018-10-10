@@ -14,22 +14,25 @@ export default new Vuex.Store({
     account: {
       email: '',  //  用户登陆邮箱
       loginSuccess: '', //登陆
-      loginStatus: false, // 记录请求状态
+      loginStatus: false, // 记录登陆状态
     },
     signUp: {
       isSignUpDisable: false, //  记录注册状态
-      imageCodeSrc: '', // 图片验证码地址
     },
     inviteCode: {
       status: false, //邀请码是否可领取状态
       codeList: '', //邀请list
     },
-    hardList: '',  //硬件列表
+    hardList: [],  //硬件列表
     revenue: {
       inviteRevenue: '', // 邀请收益
       accountRevenue: '', // 个人收益
       allRenvue: '' //用户总收益
     },
+    recommend: {
+      recommendRefer: '', //  用户推荐refer
+      count: '' //  用户推荐数
+    }
   },
   mutations,
   actions,

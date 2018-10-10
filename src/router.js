@@ -7,6 +7,7 @@ import Forget from './views/Forget.vue';
 import Revenue from './views/Revenue.vue';
 import AccountSet from './views/AccountSet.vue';
 import HardList from './views/HardList.vue';
+import Hello18n from './components/HelloI18n.vue';
 // import Change from './views/Change.vue';
 
 Vue.use(Router);

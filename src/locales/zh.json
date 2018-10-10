@@ -1,3 +1,13 @@
+
 {
-    "message": "你好"
+  "message": "hello i18n !!",
+  "login": {
+    "loginKey": "登陆",
+    "loginInputPlace": "输入邮箱",
+    "PSInputPlace": "输入密码",
+    "PSKey": "密码",
+    "loginButton": "登陆",
+    "redirectForget": "忘记密码",
+    "redirectSign": "注册"
   }
+}

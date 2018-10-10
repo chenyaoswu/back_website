@@ -38,6 +38,7 @@
 						needImageCode=true
 						:imageCode="inputImageCode"
 						:email="inputEmail"
+            @emailCodeTip="emailCodeTip"
 						placeValue="Verification Code"></SendEmailCode>
 					<div v-if="EmailCodeErrMsg" class="account-error">
 						<i class="el-alert__icon el-icon-error"></i>
@@ -65,8 +66,8 @@
 						<i class="el-alert__icon el-icon-error"></i>
 						<span class="secPsErrMsg">{{ secPsErrMsg }}</span>
           </div>
-					<div class="sign-up-button" v-on:click="signUp">Sign Up</div>
-					<div class="login-sign-wrap" v-on:click="login">Login</div>
+					<div class="sign-up-button bonus-cursor" v-on:click="signUp">Sign Up</div>
+					<div class="login-sign-wrap bonus-cursor" v-on:click="login">Login</div>
         </div>
     </AccountLayout>
   </div>
@@ -163,13 +164,13 @@ export default {
         return true;
       }
 
-      if (inputPw && inputPw.length > 6) {
+      if (inputPw && inputPw.length >= 6) {
         this.PwErrMsg = "";
       } else {
         this.isSignUpDisable = false;
         this.PwErrMsg = "The password error";
-        inputPw.length <= 6 &&
-          (this.PwErrMsg = "The password length is too small");
+        inputPw.length < 6 &&
+          (this.PwErrMsg = "The password length should more then 6");
         return true;
       }
 
@@ -187,26 +188,33 @@ export default {
       // this.DISABLE_LOGIN();
       this.ajaxSignUp({
         email: inputEmail,
-        emaiVerifyCode: inputEmailCode,
+        emailVerifyCode: inputEmailCode,
         password: inputPw,
-        rePassword: inputSePw
+        rePassword: inputSePw,
+        refer: this.$route.query.refer || ""
       }).then(res => {
         this.isSignUpDisable = false;
-        console.log("signUp:", res);
-        if (res && res.message) {
-					if (res.message === 'register success') {
-						Message({
-							message: '注册成功, 即将跳转登陆页',
-							type: 'success'
-						});
-						setTimeout(() => {
-							this.$router.push({name: 'login'})
-						}, 3000);
-					}
+        if (res && res.code && res.code === 201) {
+          Message({
+            message: "Register success, redirect after 3s",
+            type: "success",
+          });
+          setTimeout(() => {
+            this.$router.push({ name: "login" });
+          }, 3000);
         } else {
-          Message("network error");					
-				}	
+          Message(res.message || "network error");
+        }
       });
+    },
+    // 发送邮件码错误提示
+    emailCodeTip(error) {
+      console.log(error);
+      if (error.type === "captcha") {
+        this.ImageCodeErrMsg = error.message;
+      } else if (error.type === "email") {
+        this.EmailErrMsg = error.message;
+      }
     }
   }
 };
@@ -216,93 +224,93 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
 .account-dialog {
-	width: 52%;
-	max-height: 390px;
-	max-width: 420px;
-	background: #fff;
-	border: 1px solid #e3e3e7;
-	margin: 18% 0 0 10%;
-	padding-bottom: 35px;
+  width: 52%;
+  max-height: 390px;
+  max-width: 420px;
+  background: #fff;
+  border: 1px solid #e3e3e7;
+  margin: 18% 0 0 10%;
+  padding-bottom: 35px;
 }
 
 .account-dialog .title {
-	font-family: PingFangSC-Semibold;
-	color: #65686A;
-	font-size: 12px;
-	line-height: 12px;
-	padding: 30px 0 30px 40px;
-	text-align: left;
+  font-family: PingFangSC-Semibold;
+  color: #65686A;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 30px 0 30px 40px;
+  text-align: left;
 }
 
 .account-dialog .title {
-	font-size: 14px;
-	line-height: 14px;
-	padding: 35px 0 35px 30px;
-	text-align: left;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 35px 0 35px 30px;
+  text-align: left;
 }
 
 .input-wrap {
-	margin: 10px 40px 20px 40px;
+  margin: 10px 40px 20px 40px;
 }
 
 .sign-up-button {
-	box-sizing: border-box;
-	margin: 35px 30px 5px 30px;
-	background-image: linear-gradient(-180deg, #15BCAD 2%, #10B2CB 100%);
-	line-height: 30px;
-	height: 30px;
-	font-family: PingFangSC-Regular;
-	font-size: 12px;
-	color: #FFFFFF;
-	text-align: center;
-	line-height: 30px;
+  box-sizing: border-box;
+  margin: 35px 30px 5px 30px;
+  background-image: linear-gradient(-180deg, #15BCAD 2%, #10B2CB 100%);
+  line-height: 30px;
+  height: 30px;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 30px;
 }
 
 @media screen and (min-width: 1200px) {
-	.account-dialog {
-		width: 350px;
-		// height: 320px;
-	}
+  .account-dialog {
+    width: 350px;
+    // height: 320px;
+  }
 }
 
 @media screen and (max-width: 1200px) {
-	.account-dialog {
-		width: 300px;
-		// height: 280px;
-		max-height: 390px;
-		max-width: 420px;
-		background: #fff;
-		border: 1px solid #e3e3e7;
-		margin: 120px 0 0 98px;
-	}
+  .account-dialog {
+    width: 300px;
+    // height: 280px;
+    max-height: 390px;
+    max-width: 420px;
+    background: #fff;
+    border: 1px solid #e3e3e7;
+    margin: 120px 0 0 98px;
+  }
 }
 
 .account-input {
-	margin: 0 30px;
+  margin: 0 30px;
 }
 
 .password-email, .forget-code {
-	margin-top: 15px;
+  margin-top: 15px;
 }
 
 .login-sign-wrap {
-	font-family: PingFangSC-Regular;
-	font-size: 12px;
-	color: #13b8bc;
-	text-align: right;
-	line-height: 36px;
-	margin: 0 30px 35px;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #13b8bc;
+  text-align: right;
+  line-height: 36px;
+  margin: 0 30px 35px;
 }
 
 .account-error {
-	box-sizing: border-box;
-	padding: 5px 30px 0;
-	color: #EE4035;
-	font-size: 10px;
+  box-sizing: border-box;
+  padding: 5px 30px 0;
+  color: #EE4035;
+  font-size: 10px;
 }
 
 .el-alert__icon {
-	font-size: 10px;
+  font-size: 10px;
 }
 </style>
 

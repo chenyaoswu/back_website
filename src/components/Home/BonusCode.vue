@@ -5,13 +5,14 @@
       <el-row>
         <el-col :span="12"><div class="grid-content bg-purple">
           <el-alert
+            :closable="false"
             title="当前BounsClound处于测试网络阶段，需要使用BonusCode激活设备，每个BonusCode仅可以激活一台设备节点奖励权限。"
             type="error"
             center>
           </el-alert>
-          <div class="invite-wrap">
+          <div class="active-wrap">
             <span>本时段激活码领取：</span>
-            <div v-bind:class="{ noInvite: !inviteStatus }"  v-on:click="clickInviteCode" class="get-invite">立即领取</div>
+            <div v-bind:class="{ noActive: !inviteStatus }"  v-on:click="clickInviteCode" class="get-invite">立即领取</div>
           </div>
           <div class="count-time">
             <span class="key">下一时段激活码领取倒计时：</span>
@@ -23,7 +24,6 @@
           <CodeList :codeList="codeList"></CodeList>
         </el-col>
       </el-row>
-      
     </BasiceLayout>
   </div>
   <!-- </div> -->
@@ -86,8 +86,11 @@ export default {
         console.log('领取邀请码');
         this.getInviteCode().then((res) => {
           try {
-            if (res.message === 'get success') {
-              Message('领取成功');
+            if (res.message === 'getSuccess') {
+              Message({
+                type: 'success',
+                message: '领取成功',
+              });
               this.getAbleList();
             } else {
               Message('领取失败');
@@ -110,11 +113,13 @@ export default {
   font-size: 12px;
 }
 
-.invite-wrap {
+.active-wrap {
   color: #343739;
   line-height: 12px;
   text-align: left;
   margin-top: 40px;
+  font-size: 14px;
+  margin-left: 20px;
 }
 
 .get-invite {
@@ -143,6 +148,7 @@ export default {
 .count-time {
   text-align: left;
   margin-top: 40px;
+  margin-left: 20px;
 }
 
 .minute, .seconds {
@@ -157,7 +163,7 @@ export default {
   padding: 5px;
   margin-left: 10px;
 }
-.noInvite{
+.noActive{
   background: #D0D0D0;
 }
 </style>

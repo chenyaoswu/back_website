@@ -8,6 +8,10 @@
   </div>
 </template>
 <style lang="stylus">
+html, body
+  height: 100%
+#app
+  height: 100%
 *
   margin: 0
   padding: 0
@@ -32,4 +36,6 @@ a:active
   text-decoration:none
 a
   text-decoration:none;
+.bonus-cursor
+  cursor: pointer;
 </style>

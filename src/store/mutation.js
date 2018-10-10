@@ -1,8 +1,8 @@
 import {
   // 登陆页
   LOGIN_IN,
-  DISABLE_LOGIN,
-  ABLE_LOGIN,
+  // DISABLE_LOGIN,
+  // ABLE_LOGIN,
   // 注册页
   DISABLE_SIGNUP,
   ABLE_SIGNUP,
@@ -12,8 +12,14 @@ import {
   GET_ABLE_LIST,
   GET_USER_INFO,
   GET_ALL_RENVUE,
-  INVITE_REVENUE_LIST,
+  GET_LASTDAY_INVITE,
   ACCOUNT_REVENUE_LIST,
+  // 推荐
+  GET_RECOMMEND_INFO,
+  GET_RECOMMEND_COUNT,
+  // 硬件列表
+  GET_HARDLIST,
+  ACCOUNT_LASTDAY_REVENUE,
 } from './mutation-types.js'
 
 // import {setStore, getStore} from '../config/mUtils'
@@ -21,23 +27,23 @@ import {
 
 export default {
   // login 
-  [LOGIN_IN](state) {
-    state.account.loginType = true;
+  [LOGIN_IN](state, status) {
+    state.account.loginStatus = status;
     state.account =  Object.assign({}, state.account);
   },
-  //  login不可点击
-  [DISABLE_LOGIN](state) {
-    console.log(123);
-    state.account.isLoginDisable = true;
-    state.account =  Object.assign({}, state.account);
-  },
+  // //  login不可点击
+  // [DISABLE_LOGIN](state) {
+  //   console.log(123);
+  //   state.account.isLoginDisable = true;
+  //   state.account =  Object.assign({}, state.account);
+  // },
   //  login可点击
-  [ABLE_LOGIN](state) {
-    console.log(123);
-    state.account.isLoginDisable = false;
-    state.account =  Object.assign({}, state.account);
+  // [ABLE_LOGIN](state) {
+  //   console.log(123);
+  //   // state.account.isLoginDisable = false;
+  //   state.account =  Object.assign({}, state.account);
 
-  },
+  // },
   //  signup不可点击
   [DISABLE_SIGNUP](state) {
     console.log(123);
@@ -60,7 +66,6 @@ export default {
   },
   // 图片邀请码状态
   [INVITECODE_STATUS_CODE](state, status) {
-
     // const signUp = (Object.assign({}, this.state.signUp, { imageCodeSrc: imageUrl, });
     state.inviteCode.status = status;
     state.inviteCode =  Object.assign({}, state.inviteCode);
@@ -80,14 +85,29 @@ export default {
     state.revenue.allRenvue= revenue;
     state.revenue =  Object.assign({}, state.revenue);
   },
-  //  用户邀请收益详情
-  [INVITE_REVENUE_LIST](state, revenueList) {
+  //  用户邀请收益
+  [GET_LASTDAY_INVITE](state, revenueList) {
     state.revenue.inviteRevenue = revenueList;
     state.revenue =  Object.assign({}, state.revenue);
   },
   //  用户个人收益详情
-  [ACCOUNT_REVENUE_LIST](state, revenueList) {
+  [ACCOUNT_LASTDAY_REVENUE](state, revenueList) {
     state.revenue.accountRevenue = revenueList;
     state.revenue =  Object.assign({}, state.revenue);
+  },
+  //  用户推荐链接
+  [GET_RECOMMEND_INFO](state, recommend) {
+    state.recommend.recommendRefer = recommend;
+    state.recommend =  Object.assign({}, state.recommend);
+  },
+  //  用户推荐总人数
+  [GET_RECOMMEND_COUNT](state, count) {
+    state.recommend.count = count;
+    state.recommend =  Object.assign({}, state.recommend);
+  },
+  //  获取硬件列表
+  [GET_HARDLIST](state, hardList) {
+    state.hardList = hardList;
+    // state.hardList =  Object.assign({}, state.hardList);
   },
 }

@@ -12,9 +12,13 @@
 				width="90px">
 				</el-table-column>
 				<el-table-column
-				class-name="detail-more"
-				height="40px"
-				prop="content">
+					class-name="detail-more"
+					height="40px">
+					<template slot-scope="scope">
+						<a  target="_blank" :href="scope.row.link" >
+							<span >{{scope.row.content}}</span>
+						</a>
+					</template>
 				</el-table-column>
 			</el-table>
   </div>
@@ -28,17 +32,26 @@ export default {
     return {
       //	输入错误信息时提示
       tableData: [{
-        date: '2018.08.19',
-        content: 'BounsClound 白皮书  点击下载'
+        date: '2018.10.10',
+				content: 'BonusCloud 白皮书',
+				link: 'https://bonuscloud.gitbook.io/help/bonuscloud-bai-pi-shu-v1.0'
       }, {
-        date: '2018.08.19',
-        content: 'BounsClound 白皮书  点击下载'
+        date: '2018.10.10',
+				content: 'BonusCloud Lite节点接入教程',
+				link: 'http://www.right.com.cn/forum/forum-183-1.html',
       }, {
-        date: '2018.08.19',
-        content: 'BounsClound 白皮书  点击下载'
+        date: '2018.10.10',
+				content: 'Lite 节点设备支持列表',
+				link: 'https://bonuscloud.gitbook.io/help/lite-jie-dian-she-bei-zhi-chi-lie-biao',				
       }]
     };
-  },
+	},
+	methods: {
+		// redirectTo(res) {
+		// 	console.log('跳转' + res);
+		// 	this.$router.push('/demo')  //将你的跳转写在这里。
+		// },
+	}
 };
 </script>
 
@@ -67,5 +80,6 @@ export default {
   text-align: left;
 	font-size: 12px
 }
-
-	</style>
+a
+	color: #96999b;
+</style>

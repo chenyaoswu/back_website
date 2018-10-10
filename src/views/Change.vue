@@ -1,30 +1,8 @@
 <template>
   <div class="home">
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-    <Header type='account-header' />
-    <el-row class="tac">
-      <el-col :span="4">
-        <h5 class="panel-wrap">Account Settings</h5>
-        <el-menu
-          class="bonus-menu"
-          background-color="#0A0E22"
-          text-color="#989AA2"
-          active-text-color="#fff">
-          <el-menu-item index="0" class="home-page-wrap">
-            <img  class="menu-icon home-icon" src="../assets/accountSet/account-set.png" >
-            <span slot="title">Change Password</span>
-          </el-menu-item>
-           <el-menu-item index="4">
-            <img  class="menu-icon home-icon" src="../assets/accountSet/hard-list.png">
-            <span slot="title">Hardware List</span>
-          </el-menu-item>
-          <el-menu-item index="4">
-            <img  class="menu-icon home-icon" src="../assets/accountSet/wallet-bind.png">
-            <span slot="title">Wallet Binds</span>
-          </el-menu-item>
-        </el-menu>
-      </el-col>
-      <el-col :span="20" class="bonus-content">
+    <AccountSetLayout  layoutType="AccountSet" layoutTitile="Change Password">
+      <BasiceLayout title="Change Password">
         <div class="title">Change Password</div>
         <BasiceLayout title="Change Password">
           <div class="change-content">
@@ -68,8 +46,36 @@
             </div> 
           </div>
         </BasiceLayout>
+      </BasiceLayout>
+    </AccountSetLayout>
+  
+    <!-- <Header type='home-header' />
+    <el-row class="tac">
+      <el-col :span="4">
+        <h5 class="panel-wrap">Account Settings</h5>
+        <el-menu
+          class="bonus-menu"
+          background-color="#0A0E22"
+          text-color="#989AA2"
+          active-text-color="#fff">
+          <el-menu-item index="0" class="home-page-wrap">
+            <img  class="menu-icon home-icon" src="../assets/accountSet/account-set.png" >
+            <span slot="title">Change Password</span>
+          </el-menu-item>
+           <el-menu-item index="4">
+            <img  class="menu-icon home-icon" src="../assets/accountSet/hard-list.png">
+            <span slot="title">Hardware List</span>
+          </el-menu-item>
+          <el-menu-item index="4">
+            <img  class="menu-icon home-icon" src="../assets/accountSet/wallet-bind.png">
+            <span slot="title">Wallet Binds</span>
+          </el-menu-item>
+        </el-menu>
       </el-col>
-    </el-row>
+      <el-col :span="20" class="bonus-content">
+      
+      </el-col>
+    </el-row> -->
   </div>
 </template>
 

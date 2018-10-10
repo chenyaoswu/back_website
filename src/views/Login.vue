@@ -28,10 +28,10 @@
             <span class="passwordErrorMsg">{{ passwordErrorMsg }}</span>
           </div>
         <!-- 登陆 -->
-        <div class="login" v-on:click="startLogin">Login</div>
+        <div class="login bonus-cursor" v-on:click="startLogin">Login</div>
         <div class="login-sign-wrap">
-          <div class="login-sign-up" v-on:click="signUp">Sign up</div>
-          <div class="login-forget" v-on:click="forget">Forget password?</div>
+          <div class="login-sign-up bonus-cursor" v-on:click="signUp">Sign up</div>
+          <div class="login-forget bonus-cursor" v-on:click="forget">Forget password?</div>
         </div>
       </div>
     </AccountLayout>
@@ -40,35 +40,37 @@
 
 <script>
 // @ is an alias to /src
-import Header from '@/components/Header.vue';
-import AccountLayout from '@/components/AccountLayout.vue';
-import BasicInput from '@/components/BasicInput.vue';
-import { mapState, mapActions, mapMutations } from 'vuex';
+import Header from "@/components/Header.vue";
+import AccountLayout from "@/components/AccountLayout.vue";
+import BasicInput from "@/components/BasicInput.vue";
+import { mapState, mapActions, mapMutations } from "vuex";
+import { Message } from "element-ui";
 
 export default {
-  name: 'Login',
+  name: "Login",
   components: {
     Header,
     AccountLayout,
-    BasicInput,
+    BasicInput
   },
-  
+
   data() {
     return {
-      EmailErrorMsg: '',
-      passwordErrorMsg: '',
-      inputEmail: '',
-      inputPassword: '',
+      EmailErrorMsg: "",
+      passwordErrorMsg: "",
+      inputEmail: "",
+      inputPassword: "",
+      isLoginDisable: false //login可点击状态
     };
   },
   computed: mapState({
     //  箭头函数可使代码更简练
-    newEmail: state => state.account.email,
-    isLoginDisable: state => state.account.isLoginDisable,
+    newEmail: state => state.account.email
+    // isLoginDisable: state => state.account.isLoginDisable
   }),
   methods: {
-    ...mapActions(['login']),
-    ...mapMutations(['DISABLE_LOGIN']),
+    ...mapActions(["login"]),
+    // ...mapMutations(["DISABLE_LOGIN"]),
     // 登陆
     startLogin() {
       const { inputEmail, inputPassword, isLoginDisable } = this;
@@ -78,31 +80,47 @@ export default {
       // 邮箱正则表达式
       const emailRule = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
       if (emailRule.test(inputEmail)) {
-        this.EmailErrorMsg = '';
+        this.EmailErrorMsg = "";
       } else {
-        this.EmailErrorMsg = 'The email error';
+        this.EmailErrorMsg = "The email error";
         return true;
       }
       // 密码校验
-      if (inputPassword.length > 6 && inputPassword.length < 30) {
-        this.passwordErrorMsg = '';
+      if (inputPassword.length >= 6 && inputPassword.length < 30) {
+        this.passwordErrorMsg = "";
       } else {
-        this.passwordErrorMsg = 'The password is too small or too long';
+        this.passwordErrorMsg = "The password is too small or too long";
         return true;
       }
 
-      this.DISABLE_LOGIN();
-      this.login({ email: inputEmail, password: inputPassword });
+      this.isLoginDisable = true;
+      this.login({ email: inputEmail, password: inputPassword }).then(res => {
+        if (res.code === 200) {
+          Message({
+            message: "login success",
+            type: "success"
+          });
+          setTimeout(() => {
+            this.$router.push({ name: "home" });
+          }, 2000);
+        } else {
+          this.isLoginDisable = false;
+          Message({
+            message: res.message || "login error",
+            type: "error"
+          });
+        }
+      });
     },
     // 注册
     signUp() {
-      this.$router.push({name: 'signUp'});
+      this.$router.push({ name: "signUp" });
     },
     // 忘记密码
     forget() {
-      this.$router.push({name: 'forget'});
-    },
-  },
+      this.$router.push({ name: "forget" });
+    }
+  }
 };
 </script>
 

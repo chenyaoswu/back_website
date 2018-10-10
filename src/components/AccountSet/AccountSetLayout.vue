@@ -1,6 +1,6 @@
 <template>
   <div class="account-set-layout">
-		<Header type='account-header' />
+		<Header type='home-header' />
     <el-row class="tac">
       <el-col :span="4">
         <h5 class="panel-wrap">Account Settings</h5>
@@ -9,12 +9,13 @@
           background-color="#0A0E22"
           text-color="#989AA2"
           active-text-color="#fff"
+          @select="handleOpen"
 					router="router">
-          <el-menu-item index="1" route="/accountSet" class="home-page-wrap">
+          <el-menu-item index="1" route="/accountSet" class="home-page-wrap" v-bind:class="{ isActive: changeActive }">
 						<img  class="menu-icon home-icon" src="../../assets/accountSet/account-set.png" >
 						<span slot="title">Change Password</span>
           </el-menu-item>
-           <el-menu-item index="2" route="/hardList">
+           <el-menu-item index="2" route="/hardList" v-bind:class="{ isActive: !changeActive }">
 							<img  class="menu-icon home-icon" src="../../assets/accountSet/hard-list.png">
 							<span slot="title">Hardware List</span>
           </el-menu-item>
@@ -43,11 +44,28 @@ export default {
   props: {
 		layoutType: '',
 		layoutTitile: ''
+  },
+  data() {
+    return {
+      changeActive: true
+    }
+  },
+  methods: {
+    handleOpen(index) {
+      this.changeActive = (index === 1);
+    }
   }
+
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
-
+.isActive , .el-menu-item.is-active{
+  background-color: #032031;
+  border-left: 3px solid #11B6BD;
+  color: #fff !important;
+}
+.account-set-layout, .tac
+  height: 100%
 </style>

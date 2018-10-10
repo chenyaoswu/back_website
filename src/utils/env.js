@@ -8,16 +8,17 @@
  * 
  */
 
-let baseUrl = 'http://localhost:8000'; 
-// let baseUrl = 'http://203.76.212.73:7001'; 
+// let baseUrl = 'http://localhost:8000'; 
+let baseUrl = 'http://203.76.212.73:7001'; 
 let routerMode = 'hash';
 let imgBaseUrl = '';
-
+let apiUrl = '';
 
 if (process.env.NODE_ENV == 'development') {
+	baseUrl = 'http://localhost:8000';
     imgBaseUrl = '/img/';
-
 }else if(process.env.NODE_ENV == 'production'){
+	apiUrl = 'http://203.76.212.73:7001'; 
 	baseUrl = '';
     imgBaseUrl = '';
 } 

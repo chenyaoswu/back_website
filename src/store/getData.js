@@ -29,6 +29,12 @@ export const signUp = (data) => {
 /**
  * 注册
  */
+export const forgetPassword = (data) => {
+	return fetch(baseUrl + '/api/user/update/password_reset/', data, 'POST');
+};
+/**
+ * 注册
+ */
 export const ajaxLogout = (data) => {
 	return fetch(baseUrl + '/api/user/logout/', {}, 'POST');
 };
@@ -42,7 +48,7 @@ export const ajaxInviteCodeStatus = (data) => {
  * 领取邀请码	
  */
 export const ajaxGetInviteCode = (data) => {
-	return fetch(baseUrl + '/api/bcode/get/', 'POST');
+	return fetch(baseUrl + '/api/bcode/get/', {}, 'POST');
 };
 /**
  * 当前用户可用邀请码
@@ -75,7 +81,13 @@ export const ajaxChangePw = (data) => {
 	return fetch(baseUrl + '/api/user/update/password/', data, 'POST');
 };
 /**
- * 修改密码
+ * 硬件列表
+ */
+export const ajaxUnbindHard = (data) => {
+	return fetch(baseUrl + '/api/web/devices/unbind/', data, 'POST');
+};
+/**
+ * 解绑
  */
 export const ajaxHardList = (data) => {
 	return fetch(baseUrl + '/api/web/devices/list/');
@@ -91,4 +103,16 @@ export const  ajaxRevenueList = (data) => {
  */
 export const ajaxAllRevenue = (data) => {
 	return fetch(baseUrl + '/api/web/revenue/', data);
+};
+/**
+ * 用户推荐链接
+ */
+export const ajaxRecommendInfo = (data) => {
+	return fetch(baseUrl + '/api/user/get_recommend_info/');
+};
+/**
+ * 获取用户推荐数
+ */
+export const ajaxRecommendCount = (data) => {
+	return fetch(baseUrl + '/api/user/get_recommend_count/');
 };

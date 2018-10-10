@@ -1,3 +1,13 @@
 {
-  "message": "hello i18n !!"
+  "message": "hello",
+  "login": {
+    "loginKey": "Account",
+    "loginInputPlace": "Enter your email",
+    "PSInputPlace": "Enter Password",
+    "PSKey": "Password",
+    "forget": "Forget Password",
+    "loginButton": "Login",
+    "redirectForget": "Forgot Pas",
+    "redirectSign": "Sign Up"
+  }
 }

@@ -17,6 +17,9 @@ export default async (url = '', data = {}, type = 'GET', method = 'fetch') => {
 		} else {
 			response = await axios.post(url, data, {
 				'Content-Type': 'application/json;charset=UTF-8',
+				validateStatus: status => {
+					return status < 500; // 仅当状态代码大于或等于500时拒绝             
+				}
 			});
 		}
 
@@ -27,9 +30,10 @@ export default async (url = '', data = {}, type = 'GET', method = 'fetch') => {
 			Message('登陆失效,将重新登陆');
 			router.push({ name: 'login' });
 		} else {
-			Message(response.message || 'network error');
+			Message(response.data.message || 'network error');
 		}
-
+		
+		return response.data;
 	} catch (error) {
 		console.log(error);
 		return {};

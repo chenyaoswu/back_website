@@ -65,8 +65,8 @@
 						<i class="el-alert__icon el-icon-error"></i>
 						<span class="secPsErrMsg">{{ secPsErrMsg }}</span>
           </div>
-					<div class="sign-up-button" v-on:click="signUp">Reset Password</div>
-					<div class="login-sign-wrap" v-on:click="login">Login</div>
+					<div class="sign-up-button bonus-cursor" v-on:click="signUp">Reset Password</div>
+					<div class="login-sign-wrap bonus-cursor" v-on:click="login">Login</div>
         </div>
     </AccountLayout>
   </div>
@@ -121,7 +121,7 @@ export default {
     imageCodeSrc: state => state.signUp.imageCodeSrc
   }),
   methods: {
-    ...mapActions(["getImageCode", "ajaxSignUp"]),
+    ...mapActions(["getImageCode", "ajaxForget"]),
     // 登陆
     login() {
       this.$router.push({ name: "login" });
@@ -163,12 +163,12 @@ export default {
         return true;
       }
 
-      if (inputPw && inputPw.length > 6) {
+      if (inputPw && inputPw.length >= 6) {
         this.PwErrMsg = "";
       } else {
         this.isSignUpDisable = false;
         this.PwErrMsg = "The password error";
-        inputPw.length <= 6 &&
+        inputPw.length < 6 &&
           (this.PwErrMsg = "The password length is too small");
         return true;
       }
@@ -184,23 +184,25 @@ export default {
         return true;
       }
 
+      let that = this; 
+
       // this.DISABLE_LOGIN();
-      this.ajaxSignUp({
+      this.ajaxForget({
         email: inputEmail,
-        emaiVerifyCode: inputEmailCode,
+        emailVerifyCode: inputEmailCode,
         password: inputPw,
         rePassword: inputSePw
       }).then(res => {
-        this.isSignUpDisable = false;
+        that.isSignUpDisable = false;
         console.log("signUp:", res);
         if (res && res.message) {
-					if (res.message === 'register success') {
+					if (res.message === 'password reset success') {
 						Message({
 							message: '注册成功, 即将跳转登陆页',
 							type: 'success'
 						});
 						setTimeout(() => {
-							this.$router.push({name: 'login'})
+							that.$router.push({name: 'login'})
 						}, 3000);
 					}
         } else {

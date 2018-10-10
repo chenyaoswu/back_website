@@ -1,3 +1,4 @@
+// action
 import {
   loginIn,
   ajaxImageCode,
@@ -11,38 +12,50 @@ import {
   ajaxRevenueList,
   ajaxAllRevenue,
   ajaxLogout,
+  forgetPassword,
+  ajaxChangePw,
+  ajaxRecommendInfo,
+  ajaxRecommendCount,
+  ajaxUnbindHard,
 } from './getData';
 
 import {
-  LOGIN_IN, ABLE_LOGIN,
+  LOGIN_IN,
+  // ABLE_LOGIN,
   GET_IMAGE_CODE,
   INVITECODE_STATUS_CODE,
   GET_ABLE_LIST,
   GET_USER_INFO,
-  GET_HardList,
+  GET_HARDLIST,
   GET_ALL_RENVUE,
-  INVITE_REVENUE_LIST,
-  ACCOUNT_REVENUE_LIST,
+  // INVITE_REVENUE_LIST,
+  GET_LASTDAY_INVITE,
+  // ACCOUNT_REVENUE_LIST,
+  ACCOUNT_LASTDAY_REVENUE,
+  GET_RECOMMEND_INFO,
+  GET_RECOMMEND_COUNT,
 } from './mutation-types';
 import router from '../router';
 
 export default {
   async login({ commit }, params) {
     const res = await loginIn(params);
-    commit(LOGIN_IN);
-    commit(ABLE_LOGIN, false);
-    router.push({ name: 'home' });
+    if (res.code === 200) {
+      commit(LOGIN_IN, true);
+    } else {
+      commit(LOGIN_IN, false);
+    }
+    return res;
   },
   async logout({ commit }) {
     const res = await ajaxLogout();
+    commit(LOGIN_IN, false);
     router.push({ name: 'login' });
     return res;
   },
   async getImageCode({ commit }, params) {
     const res = await ajaxImageCode();
     const imgCodeUrl = res.ret.captcha;
-    console.log(imgCodeUrl);
-    console.log(123123);
     commit(GET_IMAGE_CODE, imgCodeUrl);
   },
   // 发送邮箱码
@@ -53,6 +66,11 @@ export default {
   // 发送邮箱码
   async ajaxSignUp({ commit }, params) {
     const res = await signUp(params);
+    return res;
+  },
+  // 找回密码
+  async ajaxForget({ commit }, params) {
+    const res = await forgetPassword(params);
     return res;
   },
 
@@ -93,44 +111,68 @@ export default {
   //  修改密码
   async changePw({ commit }, params) {
     const res = await ajaxChangePw(params);
-    // try {
-    //   commit(GET_USER_INFO, res.ret.email);
-    // } catch (error) {
-    //   commit(GET_USER_INFO, '');
-    // }
     return res;
   },
   //  获取硬件列表
   async getHardList({ commit }, params) {
     const res = await ajaxHardList(params);
     try {
-      commit(GET_HardList, res.ret.list);
+      commit(GET_HARDLIST, res.ret.list);
     } catch (error) {
-      commit(GET_HardList, '');
+      commit(GET_HARDLIST, []);
     }
+    return res;
+  },
+  //  获取硬件列表
+  async unbindHard({ commit }, params) {
+    const res = await ajaxUnbindHard(params);
     return res;
   },
   //  获取用户总收益
   async getAllRevenue({ commit }, params) {
     const res = await ajaxAllRevenue(params);
     try {
-      commit(GET_ALL_RENVUE, res.ret.revenue);
+      if (params.type === 'all') {
+        commit(GET_ALL_RENVUE, res.ret.revenue);
+      } else if (params.type === 'refer') {
+        commit(GET_LASTDAY_INVITE, res.ret.revenue);
+      } else if (params.type === 'account') {
+        commit(ACCOUNT_LASTDAY_REVENUE, res.ret.revenue);
+      }
     } catch (error) {
-      commit(GET_ALL_RENVUE, '');
+      console.log(error);
     }
     return res;
   },
-  //  获取用户收益详情
-  async getRevenueList({ commit }, type) {
-    const res = await ajaxRevenueList({
-      type
-    });
-    let COMMIT_TYPE = (type === 'refer ') ? INVITE_REVENUE_LIST : ACCOUNT_REVENUE_LIST
+  // //  获取用户收益详情
+  // async getRevenueList({ commit }, type) {
+  //   const res = await ajaxRevenueList({
+  //     type
+  //   });
+  //   let COMMIT_TYPE = (type === 'refer ') ? INVITE_REVENUE_LIST : ACCOUNT_REVENUE_LIST
+  //   try {
+  //     commit(COMMIT_TYPE, res.ret.list);
+  //   } catch (error) {
+  //     commit(COMMIT_TYPE, []);
+  //   }
+  //   return res;
+  // },
+  //  获取用户推荐信息
+  async getRecommendInfo({ commit }) {
+    const res = await ajaxRecommendInfo();
     try {
-      commit(COMMIT_TYPE, res.ret.list);
+      commit(GET_RECOMMEND_INFO, res.ret.user);
     } catch (error) {
-      commit(COMMIT_TYPE, []);
+      commit(GET_RECOMMEND_INFO, '');
     }
-    return res;
+  },
+  //  获取用户推荐数
+  async getRecommendCount({ commit }) {
+    const res = await ajaxRecommendCount();
+    try {
+      commit(GET_RECOMMEND_COUNT, res.ret.count);
+    } catch (error) {
+      commit(GET_RECOMMEND_INFO, 0);
+    }
   },
 };

@@ -2,24 +2,26 @@
   <div class="header"  v-bind:class="type">
     <el-row class="header-panel">
       <el-col :span="4"><div class="grid-content bg-purple">
-        <img  class="header-logo " alt="header-logo" src="../assets/bonus-logo.png" >
+        <router-link to="/">
+          <img  class="header-logo " alt="header-logo" src="../assets/bonus-logo.png" >
+        </router-link>
         <div class="line"></div>
       </div></el-col>
       <el-col :span="20" class="header-login-panel"  v-if="type !== 'login-header'">
         <router-link to="/">
-          <div  class="header-date-panel header-each-tab">
+          <div  class="header-date-panel header-each-tab" v-bind:class="{opacityPercent: !opacityPercent }">
             <img  class="menu-icon home-icon" src="../assets/home/data-panel-login.png" >            
             Date Panel
           </div>
         </router-link>
         <router-link to="/accountSet">
-          <div class="account-settings header-each-tab">
+          <div class="account-settings header-each-tab" v-bind:class="{opacityPercent: opacityPercent }">
             <img  class="menu-icon home-icon" src="../assets/home/account-setting.png" >            
             Account Settings
           </div>
         </router-link>
         <div class="header-email header-each-tab">{{email}}</div>
-        <div class="header-logout header-each-tab" @click="clickLogout">Logout</div>
+        <div class="header-logout header-each-tab  bonus-cursor" @click="clickLogout">Logout</div>
       </el-col>
     </el-row>
   </div>
@@ -27,27 +29,32 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-// import { Table, elRow } from 'element-ui';
-// import { Layout, elRow } from 'element-ui';
 
 export default {
   name: 'Header',
-  components: {
-    // Table,
-    // elRow,
-    // Layout,
-    // elRow,
-  },
   props: {
     type: ''
   },
   computed: mapState({
     email: state => state.account.email,
+    loginStatus: state => state.account.loginStatus,
+    opacityPercent() {
+      return this.$route.path === '/' ||
+        this.$route.path === '/revenue';
+    }
   }),
   methods: {
-    ...mapActions(['logout']),
+    ...mapActions(['logout', 'getUserInfo']),
+    // 注销
     clickLogout() {
       this.logout();
+    },
+  },
+  created() {
+    // if (!this.email) {
+    if (!this.email && this.loginStatus) {
+      // 获取用户信息
+      this.getUserInfo();
     }
   }
 };
@@ -99,4 +106,6 @@ export default {
   position: absolute
   right: 100px
   padding-left: 1px solid #E7EAEC
+.opacityPercent
+  opacity: 0.4;
 </style>

@@ -113,7 +113,7 @@ export default {
 }
 
 .anwser {
-  margin: 18px 0 28px
+    margin: 18px 0 28px
 }
 
 .anwserIcon {

@@ -1,48 +1,48 @@
 <template>
   <div class="home">
     <AccountSetLayout  layoutType="AccountSet" layoutTitile="Change Password">
-         <BasiceLayout title="Change Password">
-          <div class="change-content">
+      <BasiceLayout title="Change Password">
+        <div class="change-content">
+          <div class='change-item'>
+            <el-row>
+              <el-col :span="10" class="change-item-key">
+                <span class="key">Old Password</span>
+              </el-col>
+              <el-col :span="14" class="change-item-value">
+                <input type="password" class="valu"v-model="oldPw" >
+              </el-col>
+            </el-row>
+          </div>  
             <div class='change-item'>
-              <el-row>
-                <el-col :span="10" class="change-item-key">
-                  <span class="key">Old Password</span>
-                </el-col>
-                <el-col :span="14" class="change-item-value">
-                  <input type="password" class="valu"v-model="oldPw" >
-                </el-col>
-              </el-row>
-            </div>  
-             <div class='change-item'>
-              <el-row>
-                <el-col :span="10" class="change-item-key">
-                  <span class="key">New Password</span>
-                </el-col>
-                <el-col :span="14" class="change-item-value">
-                  <input type="password" class="valu"v-model="newPw">
-                </el-col>
-              </el-row>
-            </div>
-            <div class='change-item'>
-              <el-row>
-                <el-col :span="10" class="change-item-key">
-                  <span class="key">Retype New Password</span>
-                </el-col>
-                <el-col :span="14" class="change-item-value last-wrap">
-                  <input type="password" class="valu" v-model="newSecPw">
-                  <div class="change-wrap last-button-wrap">
-                    <div class="change" @click="change">change</div>
-                    <router-link to="/forget">
-                      <div class="forget">
-                        Forget Password
-                      </div>
-                    </router-link>
-                  </div>
-                </el-col>
-              </el-row>
-            </div> 
+            <el-row>
+              <el-col :span="10" class="change-item-key">
+                <span class="key">New Password</span>
+              </el-col>
+              <el-col :span="14" class="change-item-value">
+                <input type="password" class="valu"v-model="newPw">
+              </el-col>
+            </el-row>
           </div>
-        </BasiceLayout>
+          <div class='change-item'>
+            <el-row>
+              <el-col :span="10" class="change-item-key">
+                <span class="key">Retype New Password</span>
+              </el-col>
+              <el-col :span="14" class="change-item-value last-wrap">
+                <input type="password" class="valu" v-model="newSecPw">
+                <div class="change-wrap last-button-wrap">
+                  <div class="change" @click="change">change</div>
+                  <router-link to="/forget">
+                    <div class="forget">
+                      Forget Password
+                    </div>
+                  </router-link>
+                </div>
+              </el-col>
+            </el-row>
+          </div> 
+        </div>
+      </BasiceLayout>
     </AccountSetLayout>
   </div>
 </template>
@@ -52,7 +52,6 @@
 import Header from '@/components/Header.vue';
 import { mapState, mapActions, mapMutations } from 'vuex';
 import AccountSetLayout from "@/components/AccountSet/AccountSetLayout.vue";
-
 import BasiceLayout from "@/components/common/BasicLayout.vue";
 
 export default {
@@ -72,7 +71,7 @@ export default {
   created() {
   },
   methods: {
-    ...mapActions(["getInviteCodeStatus", "getUserInfo"]),
+    ...mapActions(["changePw",]),
     change () {
       console.log(this.oldPw);
       this.changePw({
@@ -138,5 +137,8 @@ export default {
   line-height: 30px;
   width: 90px;
   height: 35px;
+
+body
+  height: 100%
 </style>
 

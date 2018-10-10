@@ -3,16 +3,15 @@
 	
 			<span class="title">当前账号绑定的有效Bonus Code：</span>
       <el-table
+        empty-text="暂无Code"
         :data="codeList || []"
+        max-height="220"
         style="width: 100%">
         <el-table-column
-          prop="invite_code"
+          class="bcode-list"
+          prop="bcode"
           label="Bonus Code">
         </el-table-column>
-        <!-- <el-table-column
-          prop="name"
-          label="姓名">
-        </el-table-column> -->
       </el-table>
   </div>
 </template>
@@ -35,6 +34,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
+.bonus-list .bcode-list
+  font-size: 12px;
 .bonus-list .title{
   font-size: 14px;
   color: #96999B;
