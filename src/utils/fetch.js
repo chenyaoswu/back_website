@@ -29,9 +29,12 @@ export default async (url = '', data = {}, type = 'GET', method = 'fetch') => {
 		} else if (response.status === 401) {
 			Message('登陆失效,将重新登陆');
 			router.push({ name: 'login' });
-		} else {
-			Message(response.data.message || 'network error');
 		}
+		// else if (response.status) {
+		// 	return response.data;
+		// } else {
+		// 	Message(response.data.message || 'network error');
+		// }
 		
 		return response.data;
 	} catch (error) {

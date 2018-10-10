@@ -81,6 +81,7 @@ import AccountSetLayout from "@/components/AccountSet/AccountSetLayout.vue";
 import ImageCode from "@/components/ImageCode.vue";
 import SendEmailCode from "@/components/SendEmailCode.vue";
 import moment from "moment";
+import { Message } from "element-ui";
 
 export default {
   name: "home",
@@ -132,24 +133,35 @@ export default {
     emailCodeTip(tip) {
       console.log(tip);
     },
+    // 解绑
     unbind() {
       this.unbindHard({
         deviceId: this.unbindId,
         emailVerifyCode: this.inputEmailCode
       }).then(res => {
-        if (res.message === 'unbind success') {
+        if (res.message === "unregister success") {
           Message({
             type: "success",
-            message: "解绑成功"
+            message: res.message
           });
         } else {
           Message({
             type: "error",
-            message: "解绑失败"
+            message: res.message || "unbind error"
           });
         }
         console.log(res);
       });
+    },
+    // email错误提示
+    emailCodeTip(error) {
+      if (error.message) {
+        Message({
+          type: "error",
+          message: error.message
+        });
+        console.log(error);
+      }
     }
   },
 

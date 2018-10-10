@@ -83,6 +83,7 @@
 // @ is an alias to /src
 import Header from '@/components/Header.vue';
 import { mapState, mapActions, mapMutations } from 'vuex';
+import { Message } from "element-ui";
 
 import BasiceLayout from "@/components/common/BasicLayout.vue";
 

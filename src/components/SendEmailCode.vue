@@ -16,7 +16,7 @@
       class="send-code bonus-cursor" 
       v-bind:class="imageStyle"
       v-on:click="sendCode">Send verification code</div>
-    <div v-if="!sendStatus" class="send-code">{{ count }}</div>
+    <div v-if="!sendStatus" class="send-code" v-bind:class="imageStyle">{{ count }}</div>
   </div>
 </template>
 

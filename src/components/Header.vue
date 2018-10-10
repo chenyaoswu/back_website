@@ -52,7 +52,7 @@ export default {
   },
   created() {
     // if (!this.email) {
-    if (!this.email && this.loginStatus) {
+    if (!this.email && this.type !== 'login-header') {
       // 获取用户信息
       this.getUserInfo();
     }

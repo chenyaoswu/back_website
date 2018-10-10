@@ -5,30 +5,30 @@
       <div class="one_day_total_revenue each_item_wrap">
 				<div class="revenue_item">
 					<img  class="revenue-icon home-icon" src="../../assets/revenue/total_venue.png" >
-					<div class="revenue_title">过去24小时在线奖励总量</div>
+					<div class="revenue_title">过去24小时在线奖励总量（BXC）</div>
 				</div>
-				<div class="revunue_value">191,708 BXC</div>
+				<div class="revunue_value">191,708</div>
 			</div>
 			<div class="one_day_revenue each_item_wrap">
 				<div class="revenue_item">
 					<img  class="revenue-icon home-icon" src="../../assets/revenue/online_revunue.png" >
-					<div class="revenue_title">过去24小时挖矿总量</div>
+					<div class="revenue_title">过去24小时挖矿总量（BXC）</div>
 				</div>
-				<div class="revunue_value">{{person_account_revenue || 0}} BXC</div>
+				<div class="revunue_value">{{person_account_revenue || 0}} </div>
 			</div>
 			<div class="one_day_invite_revenue each_item_wrap">
 				<div class="revenue_item">
 					<img  class="revenue-icon home-icon" src="../../assets/revenue/online_invite.png" >
-					<div class="revenue_title">过去24小时邀请奖励</div>
+					<div class="revenue_title">过去24小时邀请奖励（BXC）</div>
 				</div>
-				<div class="revunue_value">{{person_invite_revenue || 0}} BXC</div>
+				<div class="revunue_value">{{person_invite_revenue || 0}} </div>
 			</div>
 			<div class="total_revenue each_item_wrap">
 				<div class="revenue_item">
 					<img  class="revenue-icon home-icon" src="../../assets/revenue/person_total_revenue.png" >
-					<div class="revenue_title">账号累计收益</div>
+					<div class="revenue_title">账号累计收益（BXC）</div>
 				</div>
-				<div class="revunue_value">{{allRenvue || 0}} BXC</div>
+				<div class="revunue_value">{{allRenvue || 0}}</div>
 			</div>
   	</div>
   </div>

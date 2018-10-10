@@ -53,6 +53,7 @@ import Header from '@/components/Header.vue';
 import { mapState, mapActions, mapMutations } from 'vuex';
 import AccountSetLayout from "@/components/AccountSet/AccountSetLayout.vue";
 import BasiceLayout from "@/components/common/BasicLayout.vue";
+import { Message } from "element-ui";
 
 export default {
   name: 'home',
@@ -78,6 +79,19 @@ export default {
         oldPassword: this.oldPw,
         newPassword: this.newPw,
         reNewPassword: this.newSecPw,
+      }).then(res => {
+        if (res.code === 200) {
+          Message({
+            type: 'success',
+            message: res.message
+          })
+        } else {
+           Message({
+            type: 'error',
+            message: res.message || 'password update error',
+          })
+        }
+        console.log(res);
       });
     },
   }
