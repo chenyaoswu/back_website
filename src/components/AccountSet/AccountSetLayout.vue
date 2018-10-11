@@ -33,58 +33,40 @@
   </div>
 </template>
 
-<i18n>
-{
-  "en": {
-		"account_set_menu": "Account Settings",
-		"account_set_1": "Change Password",
-		"account_set_2": "Hardware Lis",
-		"account_set_3": "Wallet Binds"
-  },
-  "zn": {
-		"account_set_menu": "账号设置",
-		"account_set_1": "修改密码",
-		"account_set_2": "硬件列表",
-		"account_set_3": "钱包绑定"
-  }
-}
-</i18n>
-
-
 <script>
-import Header from '@/components/Header.vue';
+import Header from "@/components/Header.vue";
 
 export default {
-	name: "AccountSetLayout",
-	components: {
-		Header,
-	},
+  name: "AccountSetLayout",
+  components: {
+    Header
+  },
   props: {
-		layoutType: '',
-		layoutTitile: ''
+    layoutType: "",
+    layoutTitile: ""
   },
   data() {
     return {
       changeActive: true
-    }
+    };
   },
   methods: {
     handleOpen(index) {
-      this.changeActive = (index === 1);
+      this.changeActive = index === 1;
     }
   }
-
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
-.isActive , .el-menu-item.is-active{
+.isActive, .el-menu-item.is-active {
   background-color: #032031;
   border-left: 3px solid #11B6BD;
   color: #fff !important;
 }
-.account-set-layout, .tac
-  height: 100%
+
+.account-set-layout, .tac {
+  height: 100%;
+}
 </style>
-i
