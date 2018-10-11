@@ -3,7 +3,7 @@
 		<Header type='home-header' />
     <el-row class="tac">
       <el-col :span="4">
-        <h5 class="panel-wrap">Account Settings</h5>
+        <h5 class="panel-wrap">{{$t('account_set_menu')}}</h5>
         <el-menu
           class="bonus-menu"
           background-color="#0A0E22"
@@ -13,15 +13,15 @@
 					router="router">
           <el-menu-item index="1" route="/accountSet" class="home-page-wrap" v-bind:class="{ isActive: changeActive }">
 						<img  class="menu-icon home-icon" src="../../assets/accountSet/account-set.png" >
-						<span slot="title">Change Password</span>
+						<span slot="title">{{$t('account_set_1')}}</span>
           </el-menu-item>
            <el-menu-item index="2" route="/hardList" v-bind:class="{ isActive: !changeActive }">
 							<img  class="menu-icon home-icon" src="../../assets/accountSet/hard-list.png">
-							<span slot="title">Hardware List</span>
+							<span slot="title">{{$t('account_set_2')}}</span>
           </el-menu-item>
           <el-menu-item index="3" disabled>
             <img  class="menu-icon home-icon" src="../../assets/accountSet/wallet-bind.png">
-            <span slot="title">Wallet Binds</span>
+            <span slot="title">{{$t('account_set_3')}}</span>
           </el-menu-item>
         </el-menu>
       </el-col>
@@ -32,6 +32,24 @@
     </el-row>
   </div>
 </template>
+
+<i18n>
+{
+  "en": {
+		"account_set_menu": "Account Settings",
+		"account_set_1": "Change Password",
+		"account_set_2": "Hardware Lis",
+		"account_set_3": "Wallet Binds"
+  },
+  "zn": {
+		"account_set_menu": "账号设置",
+		"account_set_1": "修改密码",
+		"account_set_2": "硬件列表",
+		"account_set_3": "钱包绑定"
+  }
+}
+</i18n>
+
 
 <script>
 import Header from '@/components/Header.vue';
@@ -69,3 +87,4 @@ export default {
 .account-set-layout, .tac
   height: 100%
 </style>
+i

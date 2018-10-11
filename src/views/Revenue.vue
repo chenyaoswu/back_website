@@ -4,7 +4,7 @@
     <Layout type="REVENUE" isRevenue="true">
       <RevenueData :allRenvue="allRenvue" :person_invite_revenue="inviteRevenue" :person_account_revenue="accountRevenue">
       </RevenueData>
-      <FAQ :FAQ="REVENUE_FAQ" />
+      <FAQ />
     </Layout>
   </div>
 </template>
@@ -24,18 +24,18 @@ export default {
     return {
       person_invite_revenue: "",
       person_account_revenue: "",
-      REVENUE_FAQ: [
-        {
-          question: '大概能获得多少收益？',
-          anwser: 'UTC时间每小时区块会产出 79,908 个BxC，按照节点的在线情况全部分发给所有在网节点，单个节点的收益取决于在网稳定情况及当前全网的节点总量。',
-        },{
-          question: '奖励总额',
-          anwser: '奖励总额：7,000,000,000 * 40% = 2,800,000,000 BxC;  奖励结算周期：UTC时间 60分钟; UTC时间 每小时奖励总额为：Total（RT） = 79,908 BxC',
-        },{
-          question: '网络任务收益计算方式',
-          anwser: '奖励总额：7,000,000,000 * 40% = 2,800,000,000 BxC;  奖励结算周期：UTC时间 60分钟; UTC时间 每小时奖励总额为：Total（RT） = 79,908 BxC',
-        },
-       ]
+      // REVENUE_FAQ: [
+      //   {
+      //     question: '大概能获得多少收益？',
+      //     anwser: 'UTC时间每小时区块会产出 79,908 个BxC，按照节点的在线情况全部分发给所有在网节点，单个节点的收益取决于在网稳定情况及当前全网的节点总量。',
+      //   },{
+      //     question: '奖励总额',
+      //     anwser: '奖励总额：7,000,000,000 * 40% = 2,800,000,000 BxC;  奖励结算周期：UTC时间 60分钟; UTC时间 每小时奖励总额为：Total（RT） = 79,908 BxC',
+      //   },{
+      //     question: '网络任务收益计算方式',
+      //     anwser: '奖励总额：7,000,000,000 * 40% = 2,800,000,000 BxC;  奖励结算周期：UTC时间 60分钟; UTC时间 每小时奖励总额为：Total（RT） = 79,908 BxC',
+      //   },
+      //  ]
     };
   },
   components: {
@@ -49,7 +49,12 @@ export default {
     //  箭头函数可使代码更简练
     inviteRevenue: state => state.revenue.inviteRevenue,
     accountRevenue: state => state.revenue.accountRevenue,
-    allRenvue: state => state.revenue.allRenvue
+    allRenvue: state => state.revenue.allRenvue,
+    // REVENVE_FAQ: function () {
+		// 	// `this` 指向 vm 实例
+		// 	let REVENVE_FAQ = Object.values(this.$t('REVENVE_FAQ'));
+    //   return REVENVE_FAQ;
+    // }
   }),
   methods: {
     ...mapActions(["getAllRevenue", "getRevenueList"])
@@ -61,28 +66,6 @@ export default {
     this.getAllRevenue({ type: "all" });
     this.getAllRevenue({ type: "refer", start, end });
     this.getAllRevenue({ type: "account" });
-  },
-  watch: {
-    // inviteRevenue: function (val) {
-    //   let {inviteRevenue} = this;
-    //   let person_account_revenue = 0;
-    //   if (inviteRevenue.length) {
-    //     inviteRevenue.map(val => {
-    //       person_account_revenue += val.revenue;
-    //     });
-    //   }
-    //   this.person_account_revenue = person_account_revenue;
-    // },
-    // accountRevenue: function (val) {
-    //   let {accountRevenue} = this;
-    //   let person_invite_revenue = 0;
-    //   if (accountRevenue.length) {
-    //     accountRevenue.map(() => {
-    //       person_invite_revenue += val.revenue;
-    //     });
-    //   }
-    //   this.person_invite_revenue = person_invite_revenue;
-    // }
   }
 };
 </script>
@@ -95,4 +78,3 @@ export default {
   height: 100%
 }
 </style>
-

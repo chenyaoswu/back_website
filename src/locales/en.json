@@ -1,13 +1,32 @@
 {
-  "message": "hello",
+  "message": "hello", 
   "login": {
-    "loginKey": "Account",
-    "loginInputPlace": "Enter your email",
-    "PSInputPlace": "Enter Password",
-    "PSKey": "Password",
-    "forget": "Forget Password",
-    "loginButton": "Login",
-    "redirectForget": "Forgot Pas",
-    "redirectSign": "Sign Up"
+      "loginTitle": "Users Login", 
+      "loginPlaceHolder": "Email", 
+      "PWPlaceHolder": "Password", 
+      "loginButton": "Login", 
+      "redirectForget": "Forgot Password", 
+      "redirectSign": "Sign Up"
+  },
+  "register": {
+    "registerTitle": "Sign Up", 
+    "registerPlaceHolder": "Email", 
+    "ImagePlaceHolder": "Image Verfication Code", 
+    "verfPlaceHolder": "Verification Code", 
+    "sendVCOde": "Send verification code", 
+    "newPw": "New Password", 
+    "confirmPw": "Comfirm Password", 
+    "signButton": "Sign Up", 
+    "redirectLogin": "Login"
+  },
+  "header": {
+    "dataPanel": "Date Panel",
+    "accountSetting": "Account Setting",
+    "logout": "Logout"
+  },
+  "DataPanel": {
+    "home": {
+      "homeTitle": "Home Page"
+    }
   }
 }

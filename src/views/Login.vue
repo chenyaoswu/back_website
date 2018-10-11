@@ -4,34 +4,41 @@
     <AccountLayout>
       <!-- 登陆框 -->
       <div class="account-dialog">
-        <div class="title">Users Login</div>
+
+      <!-- "loginTitle": "登陆", 
+      "loginPlaceHolder": "输入邮箱", 
+      "PWPlaceHolder": "输入密码", 
+      "loginButton": "登陆", 
+      "redirectForget": "忘记密码", 
+      "redirectSign": "注册" -->
+        <div class="title">{{ $t('login.loginTitle') }}</div>
         <!-- 邮箱 -->
         <BasicInput
           type="text"
           icon-type="email"
           class="account-input account-email"
-          placeValue="Email"
+          :placeValue="$t('login.loginPlaceHolder')"
           v-model="inputEmail"
           ></BasicInput>
         <div v-if="EmailErrorMsg" class="account-error">
-            <i class="el-alert__icon el-icon-error"></i>
-            <span class="EmailErrorMsg">{{ EmailErrorMsg }}</span>
+          <i class="el-alert__icon el-icon-error"></i>
+          <span class="EmailErrorMsg">{{ EmailErrorMsg }}</span>
         </div>
         <BasicInput
           type="password"
           icon-type="password"
           class="account-input password-email"
           v-model="inputPassword"
-          placeValue="Password"></BasicInput>
+          :placeValue="$t('login.PWPlaceHolder')"></BasicInput>
         <div v-if="passwordErrorMsg" class="account-error">
             <i class="el-alert__icon el-icon-error"></i>
             <span class="passwordErrorMsg">{{ passwordErrorMsg }}</span>
           </div>
         <!-- 登陆 -->
-        <div class="login bonus-cursor" v-on:click="startLogin">Login</div>
+        <div class="login bonus-cursor" v-on:click="startLogin">{{ $t('login.loginButton') }}</div>
         <div class="login-sign-wrap">
-          <div class="login-sign-up bonus-cursor" v-on:click="signUp">Sign up</div>
-          <div class="login-forget bonus-cursor" v-on:click="forget">Forget password?</div>
+          <div class="login-sign-up bonus-cursor" v-on:click="signUp">{{ $t('login.redirectSign') }}</div>
+          <div class="login-forget bonus-cursor" v-on:click="forget">{{ $t('login.redirectForget') }}?</div>
         </div>
       </div>
     </AccountLayout>

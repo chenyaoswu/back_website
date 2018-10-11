@@ -1,5 +1,5 @@
 <template>
-  <p @click="test">{{ $t('hello') }}</p>
+  <p @click="test">{{ $t('login.loginKey') }}</p>
 </template>
 
 <script>

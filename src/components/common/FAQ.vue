@@ -1,6 +1,6 @@
   <template>
 	<div class="FAQ">
-		<BasiceLayout title="FAQ" class="bonus-code-layout"> 
+		<BasiceLayout title="BonusCloud FAQ" class="bonus-code-layout"> 
       <div class="qa-item" v-for="item in FAQ">
         <div class="question">
           <span class="faq-icon">Q</span>
@@ -10,7 +10,7 @@
           </div>
         </div>
         <div class="anwser">
-          <span class="faq-icon anwser-icon">Q</span>
+          <span class="faq-icon anwser-icon">A</span>
           <div class="faq-tip-background">
             <!-- <div class="tipIcon anwserIcon"></div> -->
             <div class="tipContent anwserContent">{{item.anwser}}</div>

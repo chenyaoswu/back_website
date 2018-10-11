@@ -15,7 +15,7 @@
       v-if="sendStatus" 
       class="send-code bonus-cursor" 
       v-bind:class="imageStyle"
-      v-on:click="sendCode">Send verification code</div>
+      v-on:click="sendCode">{{ $t('register.sendVCOde') }}</div>
     <div v-if="!sendStatus" class="send-code" v-bind:class="imageStyle">{{ count }}</div>
   </div>
 </template>
@@ -171,7 +171,7 @@ input.basic-input {
   background-image: none;
   border: 1px solid #dcdfe6;
   box-sizing: border-box;
-  color: #C7CACC;
+  color: #000;
   display: inline-block;
   font-size: inherit;
   height: 30px;

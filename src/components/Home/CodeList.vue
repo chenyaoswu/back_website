@@ -1,7 +1,7 @@
 <template>
   <div class="bonus-list">
 	
-			<span class="title">当前账号绑定的有效Bonus Code：</span>
+			<span class="title">{{ $t('title') }}</span>
       <el-table
         empty-text="暂无Code"
         :data="codeList || []"
@@ -35,7 +35,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
 .bonus-list .bcode-list
-  font-size: 12px;
+  font-size: 14px;
 .bonus-list .title{
   font-size: 14px;
   color: #96999B;
@@ -50,3 +50,14 @@ export default {
   text-align: left;
 
 </style>
+
+<i18n>
+{
+  "en": {
+    "title": "The valid BonusCode for the current account binding:"
+  },
+  "zn": {
+    "title": "当前账号绑定的有效BonusCode:"
+  }
+}
+</i18n>

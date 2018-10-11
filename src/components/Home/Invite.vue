@@ -1,25 +1,25 @@
 <template>
 	<div class="BonusCode">
-		<BasiceLayout title="Invite" class="bonus-code-layout"> 
+		<BasiceLayout :title="$t( 'invite_title' )" class="bonus-code-layout"> 
       <el-row>
         <el-col :span="12">
           <el-alert
             :closable="false"
             class="invite-alert"
-            title="您将额外获得相当于被邀请节点1%挖矿收益的奖励，由BonusCloud基金会发放"
+            :title="$t( 'inviteTip' )"
             type="error"
             center>
           </el-alert>
-          <span class="invite-tips">您的邀请链接：</span>  
+          <span class="invite-tips">{{ $t( 'inviteText' ) }}</span>  
           <div class="invite-wrap">
             <div class="invite-url">{{recommendRefer}}</div>
-            <div class="invite-copy" @click="copy">复制</div>
+            <div class="invite-copy" @click="copy">{{ $t( 'cotyText' ) }}</div>
           </div>    
         </el-col>
         <el-col :span="12">
           <div class="invite-count-wrap">
-            <span>您累计邀请用户数：</span>  
-            <div class="invite-count">{{count || 0}}人</div>
+            <span>{{ $t( 'inviteCountText' ) }}</span>  
+            <div class="invite-count">{{count || 0}}</div>
           </div>
         </el-col>
       </el-row>
@@ -39,11 +39,14 @@ export default {
   },
   computed: mapState({
     count: state => state.recommend.count,
-    recommendRefer(state) {
-      return `http://console.bonuscloud.io/signUp?${
-        state.recommend.recommendRefer
-      }`;
-    }
+    recommendRefer: state => state.recommend.recommendRefer,
+  
+  // recommendRefer(state) {
+    //   console.log(state.recommend)
+    //   return `http://console.bonuscloud.io/signUp?${
+    //     state.recommend.recommendRefer
+    //   }`;
+    // }
   }),
   data() {
     return {
@@ -162,3 +165,24 @@ export default {
   color: #343739;
 }
 </style>
+
+
+<i18n>
+{
+  "en": {
+    "invite_title": "Invitation Reward",
+    "inviteTip": "you will receive an additional bonus equal to 1% of the invited node's mining revenue, sended by the BonusCloud Foundation",
+    "inviteText": "Your invitation link:",
+    "cotyText": "Copy",
+    "inviteCountText": "The total number of invited users:"
+    
+  },
+  "zn": {
+    "invite_title": "邀请奖励",
+    "inviteTip": "您将额外获得相当于被邀请节点1%挖矿收益的奖励，由BonusCloud基金会发放",
+    "inviteText": "您的邀请链接:",
+    "cotyText": "复制",
+    "inviteCountText": "您累计邀请用户数："
+  }
+}
+</i18n>

@@ -1,22 +1,22 @@
 <template>
   <div class="home">
-    <AccountSetLayout  layoutType="AccountSet" layoutTitile="Change Password">
-      <BasiceLayout title="Change Password">
+    <AccountSetLayout  layoutType="AccountSet" :layoutTitile="$t('changeTitle')">
+      <BasiceLayout :title="$t('changeTitle')">
         <div class="change-content">
           <div class='change-item'>
             <el-row>
               <el-col :span="10" class="change-item-key">
-                <span class="key">Old Password</span>
+                <span class="key">{{$t('oldText')}}</span>
               </el-col>
               <el-col :span="14" class="change-item-value">
-                <input type="password" class="valu"v-model="oldPw" >
+                <input type="password" class="valu" v-model="oldPw" >
               </el-col>
             </el-row>
           </div>  
             <div class='change-item'>
             <el-row>
               <el-col :span="10" class="change-item-key">
-                <span class="key">New Password</span>
+                <span class="key">{{$t('newText')}}</span>
               </el-col>
               <el-col :span="14" class="change-item-value">
                 <input type="password" class="valu"v-model="newPw">
@@ -26,15 +26,15 @@
           <div class='change-item'>
             <el-row>
               <el-col :span="10" class="change-item-key">
-                <span class="key">Retype New Password</span>
+                <span class="key">{{$t('secNewText')}}</span>
               </el-col>
               <el-col :span="14" class="change-item-value last-wrap">
                 <input type="password" class="valu" v-model="newSecPw">
                 <div class="change-wrap last-button-wrap">
-                  <div class="change" @click="change">change</div>
+                  <div class="change" @click="change">{{$t('changeButton')}}</div>
                   <router-link to="/forget">
                     <div class="forget">
-                      Forget Password
+                      {{$t('forgetText')}}
                     </div>
                   </router-link>
                 </div>
@@ -46,6 +46,28 @@
     </AccountSetLayout>
   </div>
 </template>
+
+<i18n>
+{
+  "en": {
+    "changeTitle": "Change Password",
+    "oldText": "Old Password",
+    "newText": "New Password",
+    "secNewText": "Retype New Password",
+    "changeButton": "change",
+    "forgetText": "Forget the old password"
+  },
+  "zn": {
+    "changeTitle": "修改密码",
+    "oldText": "旧密码",
+    "newText": "新密码",
+    "secNewText": "重复新密码",
+    "changeButton": "确定",
+    "forgetText": "忘记旧密码"
+  }
+}
+</i18n>
+
 
 <script>
 // @ is an alias to /src

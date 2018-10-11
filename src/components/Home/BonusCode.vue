@@ -6,16 +6,16 @@
         <el-col :span="12"><div class="grid-content bg-purple">
           <el-alert
             :closable="false"
-            title="当前BounsClound处于测试网络阶段，需要使用BonusCode激活设备，每个BonusCode仅可以激活一台设备节点奖励权限。"
+            :title="$t('bonusTips')"
             type="error"
             center>
           </el-alert>
           <div class="active-wrap">
-            <span>本时段激活码领取：</span>
-            <div v-bind:class="{ noActive: !inviteStatus }"  v-on:click="clickInviteCode" class="get-invite">立即领取</div>
+            <span>{{ $t('bonusGet') }}</span>
+            <div v-bind:class="{ noActive: !inviteStatus }"  v-on:click="clickInviteCode" class="get-invite">{{ $t('getText')}}</div>
           </div>
           <div class="count-time">
-            <span class="key">下一时段激活码领取倒计时：</span>
+            <span class="key">{{ $t('nextTimeText') }}</span>
             <span class="minute">{{timeMinutes}}</span>
             <span class="seconds">{{timeSeconds}}</span>
           </div>
@@ -52,7 +52,10 @@ export default {
   },
   computed: mapState({
     // 验证码地址
-    inviteStatus: state => state.inviteCode.status,
+    inviteStatus (state) {
+      // 10个激活码不可领取
+      return state.inviteCode.status && state.inviteCode.codeList.length < 10;
+    },
     codeList: state => state.inviteCode.codeList,
   }),
   mounted() {
@@ -110,12 +113,12 @@ export default {
 <style   lang="stylus">
 .bonus-code-layout {
   margin-top: 20px;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .active-wrap {
   color: #343739;
-  line-height: 12px;
+  line-height: 14px;
   text-align: left;
   margin-top: 40px;
   font-size: 14px;
@@ -167,3 +170,20 @@ export default {
   background: #D0D0D0;
 }
 </style>
+
+<i18n>
+{
+  "en": {
+    "bonusTips": "BonusCloud is in the TestNet phase and needs to activate the device using BonusCode. Each BonusCode can only activate node rewards for one device. BonusCode is bound to the account after being picked up and is not transferable.",
+    "bonusGet": "Receive BCode",
+    "nextTimeText": "The next time period BCode receives the countdown:",
+    "getText": "Receive"
+  },
+  "zn": {
+    "bonusTips": "当前BonusCloud 处于测试网络阶段，需要使用BonusCode激活设备，每个BonusCode仅可以激活一台设备的节点奖励权限。BonusCode被领取后与账号绑定，不可转让。",
+    "bonusGet":  "本时段激活码领取：",
+    "nextTimeText": "下一时段激活码领取倒计时：",
+    "getText": "领取"
+  }
+}
+</i18n>

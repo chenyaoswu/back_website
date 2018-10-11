@@ -5,6 +5,7 @@ import store from './store/index';
 import './plugins/element';
 import i18n from './i18n';
 import VueClipboard from 'vue-clipboard2';
+import VueCookie from 'vue-cookie';
 
 Vue.config.productionTip = false;
 // 复制非button组件设置
@@ -18,7 +19,8 @@ VueClipboard.config.autoSetContainer = true ;// add this line
 // Vue.prototype.$msgbox = MessageBox;
 // Vue.prototype.$message = Message;
 
-Vue.use(VueClipboard)
+Vue.use(VueClipboard);
+Vue.use(VueCookie);
 
 new Vue({
   router,

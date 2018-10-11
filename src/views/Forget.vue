@@ -198,7 +198,7 @@ export default {
         if (res && res.message) {
 					if (res.message === 'password reset success') {
 						Message({
-							message: '注册成功, 即将跳转登陆页',
+							message: 'reset password success',
 							type: 'success'
 						});
 						setTimeout(() => {

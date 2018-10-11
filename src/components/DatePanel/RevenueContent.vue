@@ -5,30 +5,32 @@
       <div class="one_day_total_revenue each_item_wrap">
 				<div class="revenue_item">
 					<img  class="revenue-icon home-icon" src="../../assets/revenue/total_venue.png" >
-					<div class="revenue_title">过去24小时在线奖励总量（BXC）</div>
+					<div class="revenue_title">{{ $t('revenue_1') }}</div>
 				</div>
-				<div class="revunue_value">191,708</div>
+				<div class="revunue_value">1917808</div>
 			</div>
 			<div class="one_day_revenue each_item_wrap">
 				<div class="revenue_item">
 					<img  class="revenue-icon home-icon" src="../../assets/revenue/online_revunue.png" >
-					<div class="revenue_title">过去24小时挖矿总量（BXC）</div>
+					<div class="revenue_title">{{ $t('revenue_2') }}</div>
 				</div>
 				<div class="revunue_value">{{person_account_revenue || 0}} </div>
 			</div>
 			<div class="one_day_invite_revenue each_item_wrap">
 				<div class="revenue_item">
 					<img  class="revenue-icon home-icon" src="../../assets/revenue/online_invite.png" >
-					<div class="revenue_title">过去24小时邀请奖励（BXC）</div>
+					<div class="revenue_title">{{ $t('revenue_3') }}</div>
 				</div>
 				<div class="revunue_value">{{person_invite_revenue || 0}} </div>
 			</div>
 			<div class="total_revenue each_item_wrap">
 				<div class="revenue_item">
 					<img  class="revenue-icon home-icon" src="../../assets/revenue/person_total_revenue.png" >
-					<div class="revenue_title">账号累计收益（BXC）</div>
+					<div class="revenue_title">{{ $t('revenue_4') }}）</div>
 				</div>
-				<div class="revunue_value">{{allRenvue || 0}}</div>
+				<div class="revunue_value">{{allRenvue || 0}}
+					
+				</div>
 			</div>
   	</div>
   </div>
@@ -37,6 +39,7 @@
 <script>
 // import { mapActions } from "vuex";
 
+
 export default {
   name: 'RevenueContent',
   props: {
@@ -44,17 +47,9 @@ export default {
     person_invite_revenue: '',
     person_account_revenue: '',
   },
-  data() {
-    return {
-
-    };
-  },
-  methods: {
-		// ...mapActions(['getAllRevenue', 'getRevenueList']),
-
-  }
 };
 </script>
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
@@ -66,13 +61,13 @@ export default {
 	justify-content center
 .revenue-icon
 	margin: 0px 8px 0 0;
-	width: 12px;
-	height: 12px;
+	width: 14px;
+	height: 14px;
 	padding-top: 4px;
 .revenue_title
 	height: 20px;
 	line-height: 20px;
-	font-size: 12px;
+	font-size: 14px;
 	color: #343739;
 .revunue_value
 	text-align: left;
@@ -83,4 +78,22 @@ export default {
 .each_item_wrap
 	width: 25%
 </style>
+
+<i18n>
+{
+  "en": {
+		"revenue_1": "Total Mining Rewards In The Past 24 Hours（BXC）",
+		"revenue_2": "Mining Revenue In The Past 24 Hours（BXC）",
+		"revenue_3": "Invited Rewards In The Past 24 Hours（BXC）",
+		"revenue_4": "Cumulative Revenue（BXC）"
+  },
+  "zn": {
+		"revenue_1": "过去24小时全网挖矿奖励总量（BXC）",
+		"revenue_2": "过去24小时账号挖矿收益（BXC）",
+		"revenue_3": "过去24小时账号邀请奖励（BXC）",
+		"revenue_4": "账号累计收益（BXC)"
+  }
+}
+</i18n>
+
 

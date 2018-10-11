@@ -1,29 +1,25 @@
 <template>
   <div class="home">
-		<AccountSetLayout layoutType="HARDLIST" layoutTitile="Hardware List">
-			<BasiceLayout title="Hardware List">
+		<AccountSetLayout layoutType="HARDLIST" :layoutTitile="$t('layoutTitile')">
+			<BasiceLayout :title="$t('hardListLayoutTitile')">
 				<div class="hardware-content">
 					<el-table
 						:data="hardList"
 						align="left"
-						empty-text="暂无硬件"
+						empty-text="empty hardList"
 						style="width: 100%">
 						<el-table-column
 							prop="mac_address"
-							label="MAC Address">
+							:label="$t('macAddress')">
 						</el-table-column>
 						<el-table-column
 							prop="bind_at"
-							label="The Binding Date">
+							:label="$t('date')">
 						</el-table-column>
 						<el-table-column
 							prop="bcode"
-							label="Binding Bonus Code">
+							:label="$t('code')">
 						</el-table-column>
-						<!-- <el-table-column
-							prop=""
-							label="Total Online Time"> -->
-						<!-- </el-table-column> -->
 							<el-table-column
 							label="">
 							<template slot-scope="scope">
@@ -71,6 +67,28 @@
 		</el-dialog>
   </div>
 </template>
+
+<i18n>
+{
+  "en": {
+		"layoutTitile": "Hardware List",
+		"hardListLayoutTitile": "Hardware List",
+		"macAddress": "MAC Address",
+		"date": " The Binding Date",
+		"code": "Binding BonusCode",
+		"totalTime": "Total Online Time"
+  },
+  "zn": {
+		"layoutTitile": "硬件绑定",
+		"hardListLayoutTitile": "硬件绑定",
+		"macAddress": "硬件MAC地址",                                                                    
+		"date": "绑定日期",
+		"code": "已绑定激活码 ",
+		"totalTime": "累计在线时长"
+  }
+}
+</i18n>
+
 
 <script>
 // @ is an alias to /src
@@ -140,6 +158,9 @@ export default {
         emailVerifyCode: this.inputEmailCode
       }).then(res => {
         if (res.message === "unregister success") {
+					// 刷新硬件列表
+					this.getHardList();
+      		this.showUnbindDialog = false;					
           Message({
             type: "success",
             message: res.message

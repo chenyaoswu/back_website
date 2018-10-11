@@ -144,24 +144,12 @@ export default {
     }
     return res;
   },
-  // //  获取用户收益详情
-  // async getRevenueList({ commit }, type) {
-  //   const res = await ajaxRevenueList({
-  //     type
-  //   });
-  //   let COMMIT_TYPE = (type === 'refer ') ? INVITE_REVENUE_LIST : ACCOUNT_REVENUE_LIST
-  //   try {
-  //     commit(COMMIT_TYPE, res.ret.list);
-  //   } catch (error) {
-  //     commit(COMMIT_TYPE, []);
-  //   }
-  //   return res;
-  // },
   //  获取用户推荐信息
   async getRecommendInfo({ commit }) {
     const res = await ajaxRecommendInfo();
     try {
-      commit(GET_RECOMMEND_INFO, res.ret.user);
+      let recommenInfo = `http://console.bonuscloud.io/signUp?${res.ret.user}`;
+      commit(GET_RECOMMEND_INFO, recommenInfo);
     } catch (error) {
       commit(GET_RECOMMEND_INFO, '');
     }
@@ -170,9 +158,9 @@ export default {
   async getRecommendCount({ commit }) {
     const res = await ajaxRecommendCount();
     try {
-      commit(GET_RECOMMEND_COUNT, res.ret.count);
+      commit(GET_RECOMMEND_COUNT, res.count);
     } catch (error) {
-      commit(GET_RECOMMEND_INFO, 0);
+      commit(GET_RECOMMEND_COUNT, 0);
     }
   },
 };

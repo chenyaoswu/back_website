@@ -69,7 +69,7 @@ input.basic-input
     background-image: none
     border: 1px solid #dcdfe6
     box-sizing: border-box;
-    color: #C7CACC
+    color: #000
     display: inline-block;
     font-size: inherit;
     height: 30px;
