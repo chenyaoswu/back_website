@@ -139,7 +139,7 @@ export default {
 
 .header-logout {
   position: absolute;
-  right: 100px;
+  right: 30px;
 }
 
 .header-email {
@@ -154,6 +154,8 @@ export default {
 
 .header-language {
   position: absolute;
-  right: 30px;
+  right: 100px;
+  text-align: center;
+  width: 30px
 }
 </style>

@@ -13,7 +13,7 @@
           <span class="invite-tips">{{ $t( 'inviteText' ) }}</span>  
           <div class="invite-wrap">
             <div class="invite-url">{{recommendRefer}}</div>
-            <div class="invite-copy" @click="copy">{{ $t( 'cotyText' ) }}</div>
+            <div class="invite-copy bonus-cursor" @click="copy">{{ $t( 'cotyText' ) }}</div>
           </div>    
         </el-col>
         <el-col :span="12">

@@ -148,7 +148,7 @@ export default {
   async getRecommendInfo({ commit }) {
     const res = await ajaxRecommendInfo();
     try {
-      let recommenInfo = `http://console.bonuscloud.io/signUp?${res.ret.user}`;
+      let recommenInfo = `https://console.bonuscloud.io/signUp?${res.ret.user}`;
       commit(GET_RECOMMEND_INFO, recommenInfo);
     } catch (error) {
       commit(GET_RECOMMEND_INFO, '');

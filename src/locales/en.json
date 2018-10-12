@@ -16,6 +16,7 @@
     "sendVCOde": "Send verification code", 
     "newPw": "New Password", 
     "confirmPw": "Comfirm Password", 
+
     "signButton": "Sign Up", 
     "redirectLogin": "Login"
   },
@@ -28,5 +29,15 @@
     "home": {
       "homeTitle": "Home Page"
     }
+  },
+  "forgetPW": {
+    "forgetTitle": "Forget Password",
+    "forgetEmail": "registered email ",
+    "forgetImg": "Image Verfication Code",
+    "forgetVer": "verification code",
+    "forgetPW": "enter a new password",
+    "forgetConfirmPW": "Type your new password again",
+    "resetButton": "Reset  Password",
+    "loginRedirect": "Login"
   }
 }

@@ -31,7 +31,7 @@
               <el-col :span="14" class="change-item-value last-wrap">
                 <input type="password" class="valu" v-model="newSecPw">
                 <div class="change-wrap last-button-wrap">
-                  <div class="change" @click="change">{{$t('changeButton')}}</div>
+                  <div class="change bonus-cursor" @click="change">{{$t('changeButton')}}</div>
                   <router-link to="/forget">
                     <div class="forget">
                       {{$t('forgetText')}}
@@ -151,7 +151,7 @@ export default {
   text-align: right
   padding-right:20px
 .change-content
-  margin-top: 40px
+  margin-top: 80px
   min-height: 500px
 .last-wrap
   postion: relative 

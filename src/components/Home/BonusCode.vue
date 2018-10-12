@@ -1,7 +1,7 @@
 <template>
   <!-- <div class=" annouce-content"> -->
 	<div class="BonusCode">
-		<BasiceLayout title="Bonus Code" class="bonus-code-layout"> 
+		<BasiceLayout title="BonusCode" class="bonus-code-layout"> 
       <el-row>
         <el-col :span="12"><div class="grid-content bg-purple">
           <el-alert
@@ -12,7 +12,7 @@
           </el-alert>
           <div class="active-wrap">
             <span>{{ $t('bonusGet') }}</span>
-            <div v-bind:class="{ noActive: !inviteStatus }"  v-on:click="clickInviteCode" class="get-invite">{{ $t('getText')}}</div>
+            <div v-bind:class="{ noActive: !inviteStatus }"  v-on:click="clickInviteCode" class="get-invite bonus-cursor">{{ $t('getText')}}</div>
           </div>
           <div class="count-time">
             <span class="key">{{ $t('nextTimeText') }}</span>

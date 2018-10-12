@@ -27,7 +27,7 @@
 									type="danger"
 									 @click="checkUnBind(scope.row.id)" 
 									 :deviceId="scope.row.id"
-									 class="unbind-button bonus-cursor">解绑</div>
+									 class="unbind-button">解绑</div>
 							</template>
 						</el-table-column>
 					</el-table>

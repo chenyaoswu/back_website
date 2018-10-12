@@ -1,16 +1,15 @@
 <template>
   <div class="bonus-list">
-	
 			<span class="title">{{ $t('title') }}</span>
       <el-table
-        empty-text="暂无Code"
+        empty-text="No BCode"
         :data="codeList || []"
         max-height="220"
         style="width: 100%">
         <el-table-column
           class="bcode-list"
           prop="bcode"
-          label="Bonus Code">
+          label="Total BCode:(这里加个zongshu)">
         </el-table-column>
       </el-table>
   </div>

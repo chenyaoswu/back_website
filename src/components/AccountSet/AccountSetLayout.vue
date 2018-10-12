@@ -1,5 +1,5 @@
 <template>
-  <div class="account-set-layout">
+   <div class="account-set-layout">
 		<Header type='home-header' />
     <el-row class="tac">
       <el-col :span="4">
@@ -32,6 +32,23 @@
     </el-row>
   </div>
 </template>
+
+<i18n>
+{
+  "en": {
+    "account_set_menu": "Account Settings",
+    "account_set_1": "Change Password",
+    "account_set_2": "Hardware List",
+    "account_set_3": "Wallet Binding"
+  },
+  "zn": {
+    "account_set_menu": "账号设置",
+    "account_set_1": "修改密码",
+    "account_set_2": "硬件列表",
+    "account_set_3": "钱包绑定"
+  }
+}
+</i18n>
 
 <script>
 import Header from "@/components/Header.vue";

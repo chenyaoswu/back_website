@@ -4,27 +4,27 @@
     <AccountLayout>
 			<!-- 登陆框 -->
 			<div class="account-dialog">
-				<div class="title">Forget Password</div>
+				<div class="title">{{$t('forgetPW.forgetTitle')}}</div>
 					<!-- 邮箱 -->
 					<BasicInput
 						type="text"
 						icon-type="email"
 						class="account-input account-email"
-						placeValue="Email"
+						:placeValue="$t('forgetPW.forgetEmail')"
             v-model="inputEmail"
 						></BasicInput>
 					<div v-if="EmailErrMsg" class="account-error">
               <i class="el-alert__icon el-icon-error"></i>
               <span class="EmailErrorMsg">{{ EmailErrMsg }}</span>
           </div>
-					<!-- 验证码 -->
+					<!-- 验证码 -->    
 					<ImageCode
 						type="text"
 						icon-type="imageCode"
             v-model="inputImageCode"
 						class="account-input forget-code"
 						v-bind:imageCodeSrc="imageCodeSrc"
-						placeValue="Image Verfication Code"></ImageCode>
+						:placeValue="$t('forgetPW.forgetImg')"></ImageCode>
 					<div v-if="ImageCodeErrMsg" class="account-error">
 						<i class="el-alert__icon el-icon-error"></i>
 						<span class="ImageCodeErrMsg">{{ ImageCodeErrMsg }}</span>
@@ -38,7 +38,7 @@
 						needImageCode=true
 						:imageCode="inputImageCode"
 						:email="inputEmail"
-						placeValue="Verification Code"></SendEmailCode>
+						:placeValue="$t('forgetPW.forgetVer')"></SendEmailCode>
 					<div v-if="EmailCodeErrMsg" class="account-error">
 						<i class="el-alert__icon el-icon-error"></i>
 						<span class="EmailCodeErrMsg">{{ EmailCodeErrMsg }}</span>
@@ -49,7 +49,7 @@
 						icon-type="password"
 						class="account-input password-email"
             v-model="inputPw"
-						placeValue="New Password"></BasicInput>
+						:placeValue="$t('forgetPW.forgetPW')"></BasicInput>
 					<div v-if="PwErrMsg" class="account-error">
 						<i class="el-alert__icon el-icon-error"></i>
 						<span class="PwErrMsg">{{ PwErrMsg }}</span>
@@ -60,13 +60,13 @@
 						icon-type="password"
 						class="account-input password-email"
             v-model="inputSePw"
-						placeValue="Comfirm Password"></BasicInput>
+						:placeValue="$t('forgetPW.forgetConfirmPW')"></BasicInput>
 					<div v-if="secPsErrMsg" class="account-error">
 						<i class="el-alert__icon el-icon-error"></i>
 						<span class="secPsErrMsg">{{ secPsErrMsg }}</span>
           </div>
-					<div class="sign-up-button bonus-cursor" v-on:click="signUp">Reset Password</div>
-					<div class="login-sign-wrap bonus-cursor" v-on:click="login">Login</div>
+					<div class="sign-up-button bonus-cursor" v-on:click="signUp">{{ $t('forgetPW.resetButton') }}</div>
+					<div class="login-sign-wrap bonus-cursor" v-on:click="login">{{ $t('forgetPW.loginRedirect') }}</div>
         </div>
     </AccountLayout>
   </div>
