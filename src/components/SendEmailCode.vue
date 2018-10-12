@@ -59,7 +59,7 @@ export default {
     ...mapActions(["sendEmailCode"]),
     sendCode() {
       let that = this;
-      const emailRule = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+      const emailRule = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
       if (!this.email || !emailRule.test(this.email)) {
         that.$emit("emailCodeTip", {
           type: "email",
@@ -78,7 +78,7 @@ export default {
 
       // 倒计时
       this.startCountBack();
-
+      
       this.sendEmailCode({
         email: this.email,
         captcha: this.imageCode

@@ -146,7 +146,7 @@ export default {
       }
 
       // 邮箱验证
-      const emailRule = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+      const emailRule = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
       if (emailRule.test(inputEmail)) {
         this.EmailErrMsg = "";
       } else {

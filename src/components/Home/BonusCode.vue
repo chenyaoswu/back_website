@@ -118,15 +118,15 @@ export default {
             if (res.message === "getSuccess") {
               Message({
                 type: "success",
-                message: "领取成功"
+                message: "receive success"
               });
               this.getAbleList();
             } else {
-              Message("领取失败");
+              Message(res.message || "reveive error");
             }
           } catch (error) {
             console.log(error);
-            Message("领取失败");
+            Message("reveive error");
           }
         });
       }
@@ -253,8 +253,8 @@ export default {
   },
   "zn": {
     "bonusTips": "当前BonusCloud 处于测试网络阶段，需要使用BonusCode激活设备，每个BonusCode仅可以激活一台设备的节点奖励权限。BonusCode被领取后与账号绑定，不可转让。",
-    "bonusGet":  "本时段激活码领取：",
-    "nextTimeText": "下一时段激活码领取倒计时：",
+    "bonusGet":  "本时段BCode领取：",
+    "nextTimeText": "下一时段BCode领取倒计时：",
     "getText": "领取",
     "ruleTip": {
       "title": "BCode领取规则:",

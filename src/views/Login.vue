@@ -29,6 +29,8 @@
           icon-type="password"
           class="account-input password-email"
           v-model="inputPassword"
+          needKeyEnter=true
+          @keyEnter="startLogin"
           :placeValue="$t('login.PWPlaceHolder')"></BasicInput>
         <div v-if="passwordErrorMsg" class="account-error">
             <i class="el-alert__icon el-icon-error"></i>
@@ -85,7 +87,7 @@ export default {
         return true;
       }
       // 邮箱正则表达式
-      const emailRule = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+      const emailRule = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
       if (emailRule.test(inputEmail)) {
         this.EmailErrorMsg = "";
       } else {

@@ -28,28 +28,36 @@
               <el-menu-item index="1-3" disabled>{{ $t('local_home_layout.menu.1_3_value') }}</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
-          <el-submenu index="2" disabled>
+          <!-- <el-submenu index="2" disabled>
              <template slot="title">
               <img  class="menu-icon home-icon" src="../../assets/revenue.png" >
               <span slot="title" disabled>{{ $t('local_home_layout.menu.2_value') }}</span>
             </template>
              <el-menu-item-group :span="3" disabled>
-              <!-- <el-menu-item index="2-1" disabled>Revenue</el-menu-item> -->
-              <!-- <el-menu-item index="2-2" disabled>Get Task</el-menu-item> -->
-              <!-- <el-menu-item index="2-3" disabled>Implementation</el-menu-item> -->
+              <el-menu-item index="2-1" disabled>Revenue</el-menu-item>
+              <el-menu-item index="2-2" disabled>Get Task</el-menu-item>
+              <el-menu-item index="2-3" disabled>Implementation</el-menu-item>
             </el-menu-item-group>
-          </el-submenu>
-          <el-submenu index="3" disabled>
+          </el-submenu> -->
+          <el-menu-item index="2" disabled>
+            <img  class="menu-icon home-icon" src="../../assets/revenue.png" >
+            <span slot="title">{{ $t('local_home_layout.menu.2_value') }}</span>
+          </el-menu-item>
+          <el-menu-item index="3" disabled>
+            <img  class="menu-icon home-icon" src="../../assets/home/task.png" >
+            <span slot="title">{{ $t('local_home_layout.menu.3_value') }}</span>
+          </el-menu-item>
+          <!-- <el-submenu index="3" disabled>
              <template slot="title">
               <img  class="menu-icon home-icon" src="../../assets/home/task.png" >
               <span slot="title" disabled>{{ $t('local_home_layout.menu.3_value') }}</span>
             </template>
              <el-menu-item-group :span="3" disabled>
-              <!-- <el-menu-item index="2-1" disabled>Revenue</el-menu-item> -->
-              <!-- <el-menu-item index="2-2" disabled>Get Task</el-menu-item> -->
-              <!-- <el-menu-item index="2-3" disabled>Implementation</el-menu-item> -->
+              <el-menu-item index="2-1" disabled>Revenue</el-menu-item>
+              <el-menu-item index="2-2" disabled>Get Task</el-menu-item>
+              <el-menu-item index="2-3" disabled>Implementation</el-menu-item>
             </el-menu-item-group>
-          </el-submenu>
+          </el-submenu> -->
           <!-- <el-menu-item index="3" disabled>
             <i class="el-icon-document"></i> 
             <span slot="title">Power Analysis</span>
@@ -172,7 +180,7 @@ export default {
   text-align: left;
   height: 40px;
   font-family: PingFangSC-Regular;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 40px;
   opacity: 0.5;
   background: #0A0F22;
@@ -224,14 +232,14 @@ export default {
 .bonus-menu .el-menu-item {
   height: 45px;
   line-height: 45px;
-  font-size: 12px;
+  font-size: 15px;
   text-align: left;
 }
 
 .bonus-menu .el-submenu__title {
   height: 40px;
   line-height: 40px;
-  font-size: 12px;
+  font-size: 15px;
   text-align: left;
 }
 
@@ -272,10 +280,11 @@ export default {
 
 .bonus-content .title {
   font-family: PingFangSC-Regular;
-  font-size: 14px;
+  font-size: 1px;
   color: #65686A;
   line-height: 40px;
   text-align: left;
+  font-weight: bold;
 }
 
 .annouce {

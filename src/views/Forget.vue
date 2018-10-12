@@ -36,6 +36,7 @@
 						class="account-input password-email"
             v-model="inputEmailCode"
 						needImageCode=true
+            @emailCodeTip="emailCodeTip"
 						:imageCode="inputImageCode"
 						:email="inputEmail"
 						:placeValue="$t('forgetPW.forgetVer')"></SendEmailCode>
@@ -145,7 +146,7 @@ export default {
       }
 
       // 邮箱验证
-      const emailRule = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+      const emailRule = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
       if (emailRule.test(inputEmail)) {
         this.EmailErrMsg = "";
       } else {
@@ -204,11 +205,22 @@ export default {
 						setTimeout(() => {
 							that.$router.push({name: 'login'})
 						}, 3000);
-					}
+					} else {
+            Message(res.message);					
+          }
         } else {
           Message("network error");					
 				}	
       });
+    },
+    // 发送邮件码错误提示
+    emailCodeTip(error) {
+      console.log(error);
+      if (error.type === "captcha") {
+        this.ImageCodeErrMsg = error.message;
+      } else if (error.type === "email") {
+        this.EmailErrMsg = error.message;
+      }
     }
   }
 };

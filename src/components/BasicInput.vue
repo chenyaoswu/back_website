@@ -28,6 +28,7 @@ export default {
     type: '', // input类型,
     value: '',
     imageCodeSrc: '', //图片验证码地址
+    needKeyEnter: '' //监听回车事件
   },
   model: {
     prop: 'value',

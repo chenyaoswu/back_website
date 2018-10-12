@@ -117,7 +117,7 @@ export default {
 .header-each-tab {
   height: 62px;
   line-height: 62px;
-  font-size: 14px;
+  font-size: 16px;
   color: #FFFFFF;
   line-height: 62px;
   margin-left: 30px;
@@ -156,6 +156,6 @@ export default {
   position: absolute;
   right: 100px;
   text-align: center;
-  width: 30px
+  width: 40px
 }
 </style>

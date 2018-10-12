@@ -7,10 +7,11 @@ import Forget from './views/Forget.vue';
 import Revenue from './views/Revenue.vue';
 import AccountSet from './views/AccountSet.vue';
 import HardList from './views/HardList.vue';
-import Hello18n from './components/HelloI18n.vue';
 // import Change from './views/Change.vue';
 
 Vue.use(Router);
+const title = 'BonusCloud: The next generation infrastructure driven by blockchain';
+
 
 export default new Router({
   mode: 'history',
@@ -19,36 +20,52 @@ export default new Router({
     {
       path: '/',
       name: 'home',
+      meta: {
+        title,
+      },
       component: Home,
     },
     {
       path: '/revenue',
       name: 'revenue',
+      meta: {
+        title,
+      },
       component: Revenue,
     },
     {
       path: '/login',
       name: 'login',
-      // component: Login,
-      component: () => import(/* webpackChunkName: "about" */ './views/Login.vue'),
+      meta: {
+        title,
+      },
+      component: Login,
+      // component: () => import(/* webpackChunkName: "about" */ './views/Login.vue'),
 
     },
     {
       path: '/signUp',
       name: 'signUp',
-      // component: SignUp,
-      component: () => import(/* webpackChunkName: "about" */ './views/SignUp.vue'),
+      meta: {
+        title,
+      },
+      component: SignUp,
     },
     {
       path: '/forget',
       name: 'forget',
-      // component: Forget,
-      component: () => import(/* webpackChunkName: "about" */ './views/Forget.vue'),
-
+      meta: {
+        title,
+      },
+      component: Forget,
+      // component: () => import(/* webpackChunkName: "about" */ './views/Forget.vue'),
     },
     {
       path: '/AccountSet',
       name: 'accountSet',
+      meta: {
+        title,
+      },
       component: AccountSet,
       // component: () => import(/* webpackChunkName: "about" */ './views/AccountSet.vue'),
       
@@ -56,9 +73,11 @@ export default new Router({
     {
       path: '/hardList',
       name: 'hardList',
+      meta: {
+        title,
+      },
       component: HardList,
       // component: () => import(/* webpackChunkName: "about" */ './views/HardList.vue'),
-
       // component: () => import(/* webpackChunkName: "HardList" */ './views/HardList.vue'),
     },
     // {
