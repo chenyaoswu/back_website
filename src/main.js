@@ -43,7 +43,11 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach(function (to) {
   if (window.ga) {
-    window.ga('set', 'page', to.fullPath) // 你可能想根据请求参数添加其他参数，可以修改这里的 to.fullPath
+    let path = to.fullPath;
+    if (path === '/') {
+      path = '/console'
+    }
+    window.ga('set', 'page', path) // 你可能想根据请求参数添加其他参数，可以修改这里的 to.fullPath
     window.ga('send', 'pageview')
   }
 })
