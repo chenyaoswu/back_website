@@ -93,7 +93,7 @@
 <script>
 // @ is an alias to /src
 import { mapState, mapActions, mapMutations } from "vuex";
-import BasiceLayout from "@/components/common/BasicLayout.vue";
+import BasiceLayout from "@/components/Common/BasicLayout.vue";
 import AccountSetLayout from "@/components/AccountSet/AccountSetLayout.vue";
 // import UnBindDialog from "@/components/AccountSet/HardList/UnBindDialog.vue";
 import ImageCode from "@/components/ImageCode.vue";

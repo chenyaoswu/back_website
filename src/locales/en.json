@@ -39,5 +39,7 @@
     "forgetConfirmPW": "Type your new password again",
     "resetButton": "Reset  Password",
     "loginRedirect": "Login"
-  }
+  },
+  "faq_link": "https://bonuscloud.gitbook.io/help/faq-en",
+  "faq_text": "BonusCloud FAQ"
 }

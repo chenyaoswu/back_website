@@ -3,7 +3,7 @@
 		<div class="annouce">
 			<div class="title">
 				<div>{{ $t('local_annouce_title') }}</div> 
-				<div class="more">{{ $t('annouce_more')}} >></div>
+				<a href="https://bonuscloud.gitbook.io/help" target="_blank"><div class="more bonus-cursor">{{ $t('annouce_more')}} >></div></a>
 			</div>
 			<div class="annouce-content">
 				<el-table

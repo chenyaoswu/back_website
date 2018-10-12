@@ -74,7 +74,7 @@
 import Header from '@/components/Header.vue';
 import { mapState, mapActions, mapMutations } from 'vuex';
 import AccountSetLayout from "@/components/AccountSet/AccountSetLayout.vue";
-import BasiceLayout from "@/components/common/BasicLayout.vue";
+import BasiceLayout from "@/components/Common/BasicLayout.vue";
 import { Message } from "element-ui";
 
 export default {

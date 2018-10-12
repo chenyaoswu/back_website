@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import BasiceLayout from "@/components/common/BasicLayout.vue";
+import BasiceLayout from "@/components/Common/BasicLayout.vue";
 import RevenueContent from '@/components/DatePanel/RevenueContent.vue';
 import { mapState, mapActions } from "vuex";
 

@@ -14,7 +14,7 @@
 import Header from "@/components/Header.vue";
 import Annouce from "@/components/Home/Annouce.vue";
 import BonusCode from "@/components/Home/BonusCode.vue";
-import FAQ from "@/components/common/FAQ.vue";
+import FAQ from "@/components/Common/FAQ.vue";
 import Invite from "@/components/Home/Invite.vue";
 import { mapState, mapActions, mapMutations } from "vuex";
 import Layout from "@/components/DatePanel/Layout.vue";

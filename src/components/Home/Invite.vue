@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import BasiceLayout from "@/components/common/BasicLayout.vue";
+import BasiceLayout from "@/components/Common/BasicLayout.vue";
 import { mapState, mapActions } from "vuex";
 import { Message } from "element-ui";
 

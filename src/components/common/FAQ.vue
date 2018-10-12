@@ -1,6 +1,6 @@
   <template>
 	<div class="FAQ">
-		<BasiceLayout title="BonusCloud FAQ" class="bonus-code-layout"> 
+		<BasiceLayout :title="$t('faq_text')" class="bonus-code-layout" :more="$t('faq_link')"> 
       <div class="qa-item" v-for="item in FAQ">
         <div class="question">
           <span class="faq-icon">Q</span>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import BasiceLayout from "@/components/common/BasicLayout.vue";
+import BasiceLayout from "@/components/Common/BasicLayout.vue";
 
 export default {
   name: "FAQ",
