@@ -3,7 +3,7 @@
 		<div class="annouce">
 			<div class="title">
 				<div>{{ $t('local_annouce_title') }}</div> 
-				<div class="more">more >></div>
+				<div class="more">{{ $t('annouce_more')}} >></div>
 			</div>
 			<div class="annouce-content">
 				<el-table
@@ -30,6 +30,17 @@
 		</div> 
   </div>
 </template>
+
+<i18n>
+{
+  "en": {
+		"annouce_more": "more"
+  },
+  "zn": {
+		"annouce_more": "查看更多"
+  }
+}
+</i18n>
 
 <script>
 export default {
