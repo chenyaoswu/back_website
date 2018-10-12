@@ -27,23 +27,6 @@ export default {
   props: {
     codeList: ""
   },
-  // watch: {
-  //   // showList: () => {
-  //     // return this.codeList || [];
-  //   // },
-  //   // codeList: () => {
-  //   //   console.log;
-  //   //   if (this.showList && this.showList.length) {
-  //   //     this.totalText = "Total BCode:" + this.showList.length;
-  //   //   }
-  //   // }
-  //   // }
-  // },
-  // computed: {
-  //   showList: () => {
-  //     return this.codeList || [];
-  //   }
-  // }
 };
 </script>
 
