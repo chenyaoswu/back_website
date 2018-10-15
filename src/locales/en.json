@@ -23,7 +23,8 @@
   "header": {
     "dataPanel": "Date Panel",
     "accountSetting": "Account Setting",
-    "logout": "Logout"
+    "logout": "Logout",
+    "hardware": "My Hardware"
   },
   "DataPanel": {
     "home": {

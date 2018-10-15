@@ -40,13 +40,6 @@ export default {
   computed: mapState({
     count: state => state.recommend.count,
     recommendRefer: state => state.recommend.recommendRefer,
-  
-  // recommendRefer(state) {
-    //   console.log(state.recommend)
-    //   return `http://console.bonuscloud.io/signUp?${
-    //     state.recommend.recommendRefer
-    //   }`;
-    // }
   }),
   data() {
     return {
@@ -175,7 +168,6 @@ export default {
     "inviteText": "Your invitation link:",
     "cotyText": "Copy",
     "inviteCountText": "The total number of invited users:"
-    
   },
   "zn": {
     "invite_title": "邀请奖励",
